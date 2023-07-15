@@ -44,8 +44,11 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textEmail = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panelDPersonales = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.registrateMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registrateCerrar)).BeginInit();
+            this.panelDPersonales.SuspendLayout();
             this.SuspendLayout();
             // 
             // textNombre
@@ -196,7 +199,7 @@
             this.btnContinuar.TabIndex = 0;
             this.btnContinuar.Text = "CONTINUAR";
             this.btnContinuar.UseVisualStyleBackColor = false;
-            this.btnContinuar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
             // registrateMinimizar
             // 
@@ -286,28 +289,48 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "_______________________________________________";
             // 
+            // panelDPersonales
+            // 
+            this.panelDPersonales.Controls.Add(this.textApellido);
+            this.panelDPersonales.Controls.Add(this.registrateCerrar);
+            this.panelDPersonales.Controls.Add(this.textEmail);
+            this.panelDPersonales.Controls.Add(this.textBox3);
+            this.panelDPersonales.Controls.Add(this.registrateMinimizar);
+            this.panelDPersonales.Controls.Add(this.label1);
+            this.panelDPersonales.Controls.Add(this.btnContinuar);
+            this.panelDPersonales.Controls.Add(this.textTelefono);
+            this.panelDPersonales.Controls.Add(this.textNumeroControl);
+            this.panelDPersonales.Controls.Add(this.textNombre);
+            this.panelDPersonales.Controls.Add(this.textBox7);
+            this.panelDPersonales.Controls.Add(this.textPassword);
+            this.panelDPersonales.Controls.Add(this.textBox6);
+            this.panelDPersonales.Controls.Add(this.textBox2);
+            this.panelDPersonales.Controls.Add(this.textBox5);
+            this.panelDPersonales.Controls.Add(this.textBox9);
+            this.panelDPersonales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDPersonales.Location = new System.Drawing.Point(0, 0);
+            this.panelDPersonales.Name = "panelDPersonales";
+            this.panelDPersonales.Size = new System.Drawing.Size(465, 489);
+            this.panelDPersonales.TabIndex = 27;
+            this.panelDPersonales.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(465, 489);
+            this.panel1.TabIndex = 27;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
+            // 
             // REGISTRO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.ClientSize = new System.Drawing.Size(465, 489);
-            this.Controls.Add(this.textEmail);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.registrateMinimizar);
-            this.Controls.Add(this.registrateCerrar);
-            this.Controls.Add(this.btnContinuar);
-            this.Controls.Add(this.textNumeroControl);
-            this.Controls.Add(this.textApellido);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textPassword);
-            this.Controls.Add(this.textTelefono);
-            this.Controls.Add(this.textNombre);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.panelDPersonales);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "REGISTRO";
             this.Opacity = 0.85D;
@@ -317,8 +340,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.REGISTRO_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.registrateMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registrateCerrar)).EndInit();
+            this.panelDPersonales.ResumeLayout(false);
+            this.panelDPersonales.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -339,5 +363,7 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textEmail;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel panelDPersonales;
+        private System.Windows.Forms.Panel panel1;
     }
 }

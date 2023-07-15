@@ -17,7 +17,7 @@ namespace CapaDatos
                 {
                     try
                     {
-                        SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNO", oconexion);
+                        SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS", oconexion);
                         cmd.CommandType = CommandType.StoredProcedure;
                         oconexion.Open();
 
@@ -31,6 +31,8 @@ namespace CapaDatos
                                     nombre = reader["nombre"].ToString(),
                                     telefono = reader["telefono"].ToString(),
                                     clave = reader["clave"].ToString(),
+                                    email = reader["email"].ToString(),
+                                    fechaCreacion = reader["fechaCreacion"].ToString(),
                                 });
 
                             }

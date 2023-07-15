@@ -13,6 +13,7 @@ namespace CapaEntidad
         public string numeroControl { get; set; }
         public string telefono { get; set; }
         public string fechaCreacion{ get; set; }
+        public string email{ get; set; }
         public int idrol { get; set; }
         
     }

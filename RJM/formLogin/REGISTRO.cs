@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 using CapaNegocio;
 using CapaEntidad;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace RJM
 {
     public partial class REGISTRO : Form
     {
         private ErrorProvider errorProvider;
+        private static String error = "";
 
         public REGISTRO()
         {
@@ -18,34 +20,95 @@ namespace RJM
             errorProvider = new ErrorProvider();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnContinuar_Click(object sender, EventArgs e)
         {
-            bool nombre = validarNombre(textNombre.Text);
-            bool apellido = validarNombre(textApellido.Text);
-            bool email = validarEmail(textEmail.Text);
-            bool telefono = validarNumeroTelefono(textTelefono.Text);
 
-            if (nombre && apellido && email && telefono)
+            if (validarUsuarios() && camposVacios())
             {
-                MessageBox.Show("Con madres padrino");
-            }
+                try
+                {
+                    //LOGIN login = new LOGIN();
+                    //CN_Usuario ousuario = new CN_Usuario();
+                    //CN_Alumno oalumno = new CN_Alumno();
+                    //oalumno.RegistrarAlumno(textNombre.Text, textApellido.Text, textTelefono.Text, textNumeroControl.Text, textPassword.Text);
+                    //MessageBox.Show("Se ha insertado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
+                    //this.Hide();
+                    //login.Show();
+                    MessageBox.Show("Chingamos PA", "Accept", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 
-            try
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo insertar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
-                //LOGIN login = new LOGIN();
-                //CN_Usuario ousuario = new CN_Usuario();
-                //CN_Alumno oalumno = new CN_Alumno();
-                //oalumno.RegistrarAlumno(textNombre.Text, textApellido.Text, textTelefono.Text, textNumeroControl.Text, textPassword.Text);
-                //MessageBox.Show("Se ha insertado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
-                //this.Hide();
-                //login.Show();
-
-
+                MessageBox.Show("No se pudo insertar debido a que " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+        }
+
+        private bool camposVacios()
+        {
+            if(textNombre.Text.Length < 4 || textNombre.Text == "NOMBRE") {
+                error = "es necesario llenar todos los campos";
+                return false;
+            }
+            else if(textApellido.Text.Length < 4 || textApellido.Text == "APELLIDO")
             {
-                MessageBox.Show("No se pudo insertar" + ex.Message);
+                error = "es necesario llenar todos los campos";
+                return false;
             }
+            else if(textTelefono.Text.Length < 4 || textTelefono.Text == "TELEFONO")
+            {
+                error = "es necesario llenar todos los campos";
+
+                return false;
+            }
+            else if (textNumeroControl.Text.Length < 4 || textNumeroControl.Text == "NUMERO CONTROL")
+            {
+                error = "es necesario llenar todos los campos";
+
+                return false;
+            }
+            else if (textEmail.Text.Length < 4 || textEmail.Text == "EMAIL")
+            {
+                error = "es necesario llenar todos los campos";
+
+                return false;
+            }
+            else if (textPassword.Text.Length < 4 || textPassword.Text == "PASSWORD")
+            {
+                error = "es necesario llenar todos los campos";
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool validarUsuarios() {
+            List<Alumno> alumnos = new CN_Alumno().Listar();
+
+            String numeroControl = textNumeroControl.Text;
+            String email = textEmail.Text;
+
+            foreach(Alumno alumno in alumnos)
+            {
+                if (alumno.numeroControl == numeroControl)
+                {
+                    error = "ya existe ese Número de Control";
+                    return false;
+                }
+                if(alumno.email == email)
+                {
+                    error = "ya existe ese Email";
+                    return false;
+                }                
+            }
+            return true;
 
         }
 
