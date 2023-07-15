@@ -13,7 +13,6 @@ namespace CapaEntidad
         public string correo { get; set; }
         public string clave { get; set; }
         public Rol oRol { get; set; }
-        public bool estado { get; set; }
         public string fechaRegistro { get; set; }
     }
 }

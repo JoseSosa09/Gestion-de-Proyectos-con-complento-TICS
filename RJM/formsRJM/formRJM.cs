@@ -16,27 +16,38 @@ namespace RJM
     {
         private static Button MenuActivo = null;
         private static Form FormularioActivo = null;
+        private static bool Help = false;
 
         public FormRJM()
         {
             InitializeComponent();
+            SidePanel.Width = btnPropuestas.Width;
+            SidePanel.Left = btnPropuestas.Left;
         }
 
         public void abrirFormulario(Button menu, Form form)
-        {
-            SidePanel.Visible = true;
+        {            
+                
+            if( Help == false)
+            {
+                btnPropuestas.BackColor = Color.Black;
+                btnPropuestas.ForeColor = Color.Gold;
+            }
 
             if (MenuActivo != null)
             {
-                MenuActivo.BackColor = Color.Transparent;
-                MenuActivo.ForeColor = Color.Gold;
-                SidePanel.BackColor = Color.White;
-                
+                MenuActivo.BackColor = Color.Black;
+                MenuActivo.ForeColor = Color.Gold;                
             }
-            menu.BackColor = Color.White;
-            menu.ForeColor = Color.Black;
-            SidePanel.BackColor = Color.Black;
-            MenuActivo = menu;
+
+            if(menu != null)
+            {
+                menu.BackColor = Color.White;
+                menu.ForeColor = Color.Black;                
+                MenuActivo = menu;
+                Help = true;
+            }
+
 
             if (FormularioActivo != null)
             {
@@ -48,44 +59,52 @@ namespace RJM
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
             form.BackColor = Color.GhostWhite;
+            contenedor.Controls.Add(form);
+            form.Show();            
+        }
+
+        private void inicioFormulario(Form form)
+        {
+            FormularioActivo = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            form.BackColor = Color.GhostWhite;
 
             contenedor.Controls.Add(form);
             form.Show();
-
         }
-
         private void btnPropuestas_Click(object sender, EventArgs e)
-        {
-            SidePanel.Visible = true;
+        {            
             abrirFormulario((Button)sender, new formPropuestas());
             SidePanel.Width = btnPropuestas.Width;
             SidePanel.Left = btnPropuestas.Left;
         }
 
         private void btnResidencias_Click(object sender, EventArgs e)
-        {
-            SidePanel.Visible = true;
+        {         
             abrirFormulario((Button)sender, new formProgramaResidencias());
             SidePanel.Width = btnResidencias.Width;
             SidePanel.Left = btnResidencias.Left;
         }
 
         private void btnServicioSocial_Click(object sender, EventArgs e)
-        {
-            SidePanel.Visible = true;
+        {         
             abrirFormulario((Button)sender, new formProgramaServicioSocial());
             SidePanel.Width = btnServicioSocial.Width;
             SidePanel.Left = btnServicioSocial.Left;
         }
 
         private void btnProyectoIntegrador_Click(object sender, EventArgs e)
-        {
-            SidePanel.Visible = true;
+        {            
             abrirFormulario((Button)sender, new formProyectoIntegrador());
             SidePanel.Width = btnProyectoIntegrador.Width;
             SidePanel.Left = btnProyectoIntegrador.Left;
         }
 
-
+        private void FormRJM_Load(object sender, EventArgs e)
+        {
+            inicioFormulario(new formPropuestas());
+        }
     }
 }

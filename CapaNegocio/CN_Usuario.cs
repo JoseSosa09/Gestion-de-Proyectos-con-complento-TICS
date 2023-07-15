@@ -23,5 +23,9 @@ namespace CapaNegocio
         {
             objcd_Usuario.RegistrarUsuario(nombre, apellido, email, numeroControl, password);
         }
+        public void RegistrarAlumno(String nombre, String apellido, String email, String numeroControl, String password)
+        {
+            objcd_Usuario.RegistrarAlumno(nombre, apellido, email, numeroControl, password);
+        }
     }
 }

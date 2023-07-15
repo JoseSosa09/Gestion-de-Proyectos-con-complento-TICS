@@ -30,22 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LOGIN));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textPassword = new System.Windows.Forms.TextBox();
             this.linkRegistrarme = new System.Windows.Forms.LinkLabel();
-            this.loginMinimizar = new FontAwesome.Sharp.IconPictureBox();
-            this.loginCerrar = new FontAwesome.Sharp.IconPictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnAcceder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textUser = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textPassword = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.icnonoMinimizar = new FontAwesome.Sharp.IconButton();
+            this.iconoCerrar = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loginMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginCerrar)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,10 +52,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.panel1.Controls.Add(this.iconoCerrar);
+            this.panel1.Controls.Add(this.icnonoMinimizar);
             this.panel1.Controls.Add(this.textPassword);
             this.panel1.Controls.Add(this.linkRegistrarme);
-            this.panel1.Controls.Add(this.loginMinimizar);
-            this.panel1.Controls.Add(this.loginCerrar);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.btnAcceder);
             this.panel1.Controls.Add(this.label1);
@@ -69,6 +67,20 @@
             this.panel1.Size = new System.Drawing.Size(466, 373);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // textPassword
+            // 
+            this.textPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.textPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.textPassword.Location = new System.Drawing.Point(98, 167);
+            this.textPassword.Name = "textPassword";
+            this.textPassword.Size = new System.Drawing.Size(289, 25);
+            this.textPassword.TabIndex = 2;
+            this.textPassword.Text = "PASSWORD";
+            this.textPassword.Enter += new System.EventHandler(this.textPassword_Enter);
+            this.textPassword.Leave += new System.EventHandler(this.textPassword_Leave);
             // 
             // linkRegistrarme
             // 
@@ -84,36 +96,6 @@
             this.linkRegistrarme.Text = "Registrarme";
             this.linkRegistrarme.VisitedLinkColor = System.Drawing.Color.Red;
             this.linkRegistrarme.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRegistrarme_LinkClicked);
-            // 
-            // loginMinimizar
-            // 
-            this.loginMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.loginMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.loginMinimizar.ForeColor = System.Drawing.Color.DarkGray;
-            this.loginMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.loginMinimizar.IconColor = System.Drawing.Color.DarkGray;
-            this.loginMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.loginMinimizar.Location = new System.Drawing.Point(397, 2);
-            this.loginMinimizar.Name = "loginMinimizar";
-            this.loginMinimizar.Size = new System.Drawing.Size(32, 32);
-            this.loginMinimizar.TabIndex = 8;
-            this.loginMinimizar.TabStop = false;
-            this.loginMinimizar.Click += new System.EventHandler(this.loginMinimizar_Click);
-            // 
-            // loginCerrar
-            // 
-            this.loginCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.loginCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.loginCerrar.ForeColor = System.Drawing.Color.DarkGray;
-            this.loginCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.loginCerrar.IconColor = System.Drawing.Color.DarkGray;
-            this.loginCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.loginCerrar.Location = new System.Drawing.Point(431, 2);
-            this.loginCerrar.Name = "loginCerrar";
-            this.loginCerrar.Size = new System.Drawing.Size(32, 32);
-            this.loginCerrar.TabIndex = 7;
-            this.loginCerrar.TabStop = false;
-            this.loginCerrar.Click += new System.EventHandler(this.loginCerrar_Click);
             // 
             // linkLabel1
             // 
@@ -186,6 +168,20 @@
             this.textUser.Enter += new System.EventHandler(this.textUser_Enter);
             this.textUser.Leave += new System.EventHandler(this.textUser_Leave);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.DarkGray;
+            this.textBox1.Location = new System.Drawing.Point(98, 110);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(341, 25);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "____________________________________";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.pictureBox2);
@@ -220,50 +216,59 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // textPassword
+            // icnonoMinimizar
             // 
-            this.textPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.textPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.textPassword.Location = new System.Drawing.Point(98, 167);
-            this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(289, 25);
-            this.textPassword.TabIndex = 2;
-            this.textPassword.Text = "PASSWORD";
-            this.textPassword.Enter += new System.EventHandler(this.textPassword_Enter);
-            this.textPassword.Leave += new System.EventHandler(this.textPassword_Leave);
+            this.icnonoMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.icnonoMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.icnonoMinimizar.FlatAppearance.BorderSize = 0;
+            this.icnonoMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.icnonoMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.icnonoMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.icnonoMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            this.icnonoMinimizar.IconColor = System.Drawing.Color.White;
+            this.icnonoMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.icnonoMinimizar.IconSize = 32;
+            this.icnonoMinimizar.Location = new System.Drawing.Point(405, 3);
+            this.icnonoMinimizar.Name = "icnonoMinimizar";
+            this.icnonoMinimizar.Size = new System.Drawing.Size(26, 26);
+            this.icnonoMinimizar.TabIndex = 27;
+            this.icnonoMinimizar.UseVisualStyleBackColor = false;
+            this.icnonoMinimizar.Click += new System.EventHandler(this.loginMinimizar_Click);
             // 
-            // textBox1
+            // iconoCerrar
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DarkGray;
-            this.textBox1.Location = new System.Drawing.Point(98, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 25);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.TabStop = false;
-            this.textBox1.Text = "____________________________________";
+            this.iconoCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconoCerrar.FlatAppearance.BorderSize = 0;
+            this.iconoCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconoCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconoCerrar.IconColor = System.Drawing.Color.White;
+            this.iconoCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconoCerrar.IconSize = 32;
+            this.iconoCerrar.Location = new System.Drawing.Point(434, 3);
+            this.iconoCerrar.Margin = new System.Windows.Forms.Padding(0);
+            this.iconoCerrar.Name = "iconoCerrar";
+            this.iconoCerrar.Size = new System.Drawing.Size(26, 26);
+            this.iconoCerrar.TabIndex = 28;
+            this.iconoCerrar.UseVisualStyleBackColor = true;
+            this.iconoCerrar.Click += new System.EventHandler(this.loginCerrar_Click);
             // 
             // LOGIN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(800, 369);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LOGIN";
             this.Opacity = 0.85D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOGIN";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loginMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginCerrar)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -278,13 +283,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textUser;
-        private FontAwesome.Sharp.IconPictureBox loginCerrar;
-        private FontAwesome.Sharp.IconPictureBox loginMinimizar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkRegistrarme;
         private System.Windows.Forms.TextBox textPassword;
         private System.Windows.Forms.TextBox textBox1;
+        private FontAwesome.Sharp.IconButton icnonoMinimizar;
+        private FontAwesome.Sharp.IconButton iconoCerrar;
     }
 }
