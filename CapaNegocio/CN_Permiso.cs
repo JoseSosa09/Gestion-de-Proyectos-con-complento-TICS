@@ -12,10 +12,17 @@ namespace CapaNegocio
     {
         private CD_Permiso objcd_Permiso = new CD_Permiso();
 
-        public List<Permiso> Listar(string numeroControl)
+        public List<Permiso> ListarUsuario(string numeroControl)
         {
 
-            return objcd_Permiso.Listar(numeroControl);
+            return objcd_Permiso.ListarUsuario(numeroControl);
         }
+
+        public List<Permiso> ListarMaestro(string rfc)
+        {
+
+            return objcd_Permiso.ListarMaestro(rfc);
+        }
+
     }
 }

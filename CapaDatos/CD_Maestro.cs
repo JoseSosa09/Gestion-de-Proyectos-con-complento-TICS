@@ -18,10 +18,9 @@ namespace CapaDatos
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
-                {
-                    string query = "Select rfc, nombreCompleto, correo, clave, estado from maestro";
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    cmd.CommandType = CommandType.Text;
+                {                    
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_MAESTRO", oconexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -33,8 +32,7 @@ namespace CapaDatos
                                 rfc = reader["rfc"].ToString(),
                                 nombreCompleto = reader["nombreCompleto"].ToString(),
                                 correo = reader["correo"].ToString(),
-                                clave = reader["clave"].ToString(),
-                                estado = Convert.ToBoolean(reader["estado"])
+                                clave = reader["clave"].ToString()                                
                             });
 
                         }

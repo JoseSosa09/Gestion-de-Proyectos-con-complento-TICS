@@ -65,6 +65,27 @@ namespace CapaDatos
                 comando.Parameters.AddWithValue("@clave", password);
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();
+                oconexion.Close();
+            }
+            
+
+        } //RegistrarUsuario
+
+        public void RegistrarAlumno(String nombre, String apellido, String telefono, String numeroControl, String password)
+        {
+            String nombreCompleto = nombre + " " + apellido;
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                SqlCommand comando = new SqlCommand("SP_REGISTRAR_ALUMNO", oconexion);
+                oconexion.Open();
+                comando.CommandText = "SP_REGISTRAR_ALUMNO";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@nombre", nombreCompleto);
+                comando.Parameters.AddWithValue("@telefono", telefono);
+                comando.Parameters.AddWithValue("@numeroControl", numeroControl);
+                comando.Parameters.AddWithValue("@clave", password);
+                comando.ExecuteNonQuery();
+                comando.Parameters.Clear();
             }
 
         } //RegistrarUsuario

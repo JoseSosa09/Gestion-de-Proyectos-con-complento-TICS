@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Alumno.cs" />
+    <Compile Include="CN_ControlProyectoIntegrador.cs" />
     <Compile Include="CN_Maestro.cs" />
     <Compile Include="CN_Permiso.cs" />
+    <Compile Include="CN_ProyectoIntegrador.cs" />
+    <Compile Include="CN_ProyectoPropuesta.cs" />
+    <Compile Include="CN_ServicioSocial.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

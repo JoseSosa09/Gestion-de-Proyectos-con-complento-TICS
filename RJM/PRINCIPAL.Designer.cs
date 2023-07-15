@@ -46,12 +46,9 @@
             this.ENCUESTA = new System.Windows.Forms.Button();
             this.INICIO = new System.Windows.Forms.Button();
             this.contenedor = new System.Windows.Forms.Panel();
-            this.panelBusqueda = new RJM.panel();
-            this.textBoxBusqueda = new System.Windows.Forms.TextBox();
             this.barraTitulo.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
-            this.panelBusqueda.SuspendLayout();
             this.SuspendLayout();
             // 
             // barraTitulo
@@ -59,7 +56,6 @@
             this.barraTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.barraTitulo.BackColor = System.Drawing.Color.Black;
-            this.barraTitulo.Controls.Add(this.panelBusqueda);
             this.barraTitulo.Controls.Add(this.panel1);
             this.barraTitulo.Controls.Add(this.icnonoMinimizar);
             this.barraTitulo.Controls.Add(this.iconoRestaurar);
@@ -80,6 +76,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(544, 51);
             this.panel1.TabIndex = 28;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barraTitulo_MouseDown);
             // 
             // labelUsuario
             // 
@@ -91,6 +88,7 @@
             this.labelUsuario.Size = new System.Drawing.Size(150, 23);
             this.labelUsuario.TabIndex = 31;
             this.labelUsuario.Text = "Emma Watson";
+            this.labelUsuario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barraTitulo_MouseDown);
             // 
             // label
             // 
@@ -102,6 +100,7 @@
             this.label.Size = new System.Drawing.Size(90, 23);
             this.label.TabIndex = 30;
             this.label.Text = "Usuario: ";
+            this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barraTitulo_MouseDown);
             // 
             // icnonoMinimizar
             // 
@@ -109,8 +108,8 @@
             this.icnonoMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.icnonoMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
             this.icnonoMinimizar.FlatAppearance.BorderSize = 0;
-            this.icnonoMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.icnonoMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.icnonoMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.icnonoMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.icnonoMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.icnonoMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
             this.icnonoMinimizar.IconColor = System.Drawing.Color.White;
@@ -128,8 +127,8 @@
             this.iconoRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconoRestaurar.Dock = System.Windows.Forms.DockStyle.Right;
             this.iconoRestaurar.FlatAppearance.BorderSize = 0;
-            this.iconoRestaurar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.iconoRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.iconoRestaurar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.iconoRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconoRestaurar.IconChar = FontAwesome.Sharp.IconChar.WindowRestore;
             this.iconoRestaurar.IconColor = System.Drawing.Color.White;
@@ -148,7 +147,8 @@
             this.iconoCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconoCerrar.Dock = System.Windows.Forms.DockStyle.Right;
             this.iconoCerrar.FlatAppearance.BorderSize = 0;
-            this.iconoCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.iconoCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.iconoCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconoCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
             this.iconoCerrar.IconColor = System.Drawing.Color.White;
@@ -180,6 +180,7 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(110, 639);
             this.panelMenu.TabIndex = 14;
+            this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barraTitulo_MouseDown);
             // 
             // SALIDA
             // 
@@ -289,6 +290,7 @@
             this.ALUMNOS.Text = "Alumnos";
             this.ALUMNOS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ALUMNOS.UseVisualStyleBackColor = true;
+            this.ALUMNOS.Click += new System.EventHandler(this.ALUMNOS_Click);
             // 
             // PROYECTO
             // 
@@ -362,51 +364,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.contenedor.BackColor = System.Drawing.Color.Transparent;
-            this.contenedor.Location = new System.Drawing.Point(110, 52);
+            this.contenedor.Location = new System.Drawing.Point(110, 51);
             this.contenedor.Margin = new System.Windows.Forms.Padding(0);
             this.contenedor.Name = "contenedor";
-            this.contenedor.Size = new System.Drawing.Size(1319, 638);
+            this.contenedor.Size = new System.Drawing.Size(1319, 639);
             this.contenedor.TabIndex = 16;
-            // 
-            // panelBusqueda
-            // 
-            this.panelBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBusqueda.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelBusqueda.BorderRadius = 30;
-            this.panelBusqueda.Controls.Add(this.textBoxBusqueda);
-            this.panelBusqueda.ForeColor = System.Drawing.Color.Black;
-            this.panelBusqueda.GradientAngle = 90F;
-            this.panelBusqueda.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.panelBusqueda.GradientTopColor = System.Drawing.Color.WhiteSmoke;
-            this.panelBusqueda.Location = new System.Drawing.Point(110, 12);
-            this.panelBusqueda.Name = "panelBusqueda";
-            this.panelBusqueda.Size = new System.Drawing.Size(673, 30);
-            this.panelBusqueda.TabIndex = 29;
-            // 
-            // textBoxBusqueda
-            // 
-            this.textBoxBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBusqueda.BackColor = System.Drawing.Color.White;
-            this.textBoxBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBusqueda.ForeColor = System.Drawing.Color.DimGray;
-            this.textBoxBusqueda.Location = new System.Drawing.Point(9, 6);
-            this.textBoxBusqueda.Name = "textBoxBusqueda";
-            this.textBoxBusqueda.Size = new System.Drawing.Size(659, 19);
-            this.textBoxBusqueda.TabIndex = 0;
-            this.textBoxBusqueda.Text = "   Busqueda...";
             // 
             // PRINCIPAL
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1429, 690);
             this.Controls.Add(this.contenedor);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.barraTitulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1447, 737);
             this.Name = "PRINCIPAL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -417,8 +390,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelMenu.ResumeLayout(false);
-            this.panelBusqueda.ResumeLayout(false);
-            this.panelBusqueda.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -441,8 +412,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelUsuario;
         private System.Windows.Forms.Label label;
-        private panel panelBusqueda;
-        private System.Windows.Forms.TextBox textBoxBusqueda;
     }
 }
 

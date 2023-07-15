@@ -101,15 +101,15 @@ namespace RJM
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            List<Usuario> TEST_USUARIO = new CN_Usuario().Listar();
+            List<Alumno> TEST_ALUMNO = new CN_Alumno().Listar();
             List<Maestro> TEST_MAESTRO = new CN_Maestro().Listar();
 
-            Usuario ousuario = new CN_Usuario().Listar().Where(u => u.numeroControl == textUser.Text && u.clave == textPassword.Text).FirstOrDefault();
+            Alumno oalumno = new CN_Alumno().Listar().Where(u => u.numeroControl == textUser.Text && u.clave == textPassword.Text).FirstOrDefault();
             Maestro omaestro = new CN_Maestro().Listar().Where(u => u.rfc == textUser.Text && u.clave == textPassword.Text).FirstOrDefault();
 
-            if (ousuario != null)
+            if (oalumno != null)
             {
-                PRINCIPAL form = new PRINCIPAL(ousuario, omaestro);
+                PRINCIPAL form = new PRINCIPAL(oalumno, omaestro);
                 form.Show();
                 this.Hide();
                 form.FormClosing += formRegresarLoginPrincipal;
@@ -117,7 +117,7 @@ namespace RJM
 
             else if (omaestro != null)
             {
-                PRINCIPAL form = new PRINCIPAL(ousuario, omaestro);
+                PRINCIPAL form = new PRINCIPAL(oalumno, omaestro);
                 form.Show();
                 this.Hide();
                 form.FormClosing += formRegresarLoginPrincipal;

@@ -17,16 +17,16 @@ namespace RJM
     {
         private int borderSize = 3;
         private Size formSize; //Botones,Restaurar
-        private static Usuario usuarioActual;
+        private static Alumno usuarioActual;
         private static Maestro usuarioMaestro;
         private static Button MenuActivo = null;
         private static Form FormularioActivo = null;
 
 
         //Fields
-        public PRINCIPAL(Usuario objusuario, Maestro objmaestro)
+        public PRINCIPAL(Alumno objalumno, Maestro objmaestro)
         {
-            usuarioActual = objusuario;
+            usuarioActual = objalumno;
             usuarioMaestro = objmaestro;
 
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace RJM
             //Si es Usuario
             if (usuarioActual != null)
             {
-                List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.numeroControl);
+                List<Permiso> ListaPermisos = new CN_Permiso().ListarUsuario(usuarioActual.numeroControl);
 
                 foreach (Button buttonMenu in panelMenu.Controls)
                 {
@@ -51,12 +51,12 @@ namespace RJM
                     }
                 }
             
-                labelUsuario.Text = usuarioActual.nombreCompleto.ToString();
+                labelUsuario.Text = usuarioActual.nombre.ToString();
             }
             //Si es Maestro
             else
             {
-                List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioMaestro.rfc);
+                List<Permiso> ListaPermisos = new CN_Permiso().ListarMaestro(usuarioMaestro.rfc);
 
                 foreach (Button buttonMenu in panelMenu.Controls)
                 {
@@ -78,7 +78,7 @@ namespace RJM
         {
             if (MenuActivo != null)
             {
-                MenuActivo.BackColor = Color.Goldenrod; ;
+                MenuActivo.BackColor = Color.Goldenrod; 
 
             }
             menu.BackColor = Color.White;
@@ -98,44 +98,6 @@ namespace RJM
             contenedor.Controls.Add(form);
             form.Show();
 
-        }
-
-
-        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void iconoCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void icnonoMinimizar_Click(object sender, EventArgs e)
-        {
-
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void iconoRestaurar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                formSize = this.ClientSize;
-                this.WindowState = FormWindowState.Maximized;
-            }
-
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                this.Size = formSize;
-            }
-        }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            AdjustForm();
         }
 
         //Private methods
@@ -186,18 +148,6 @@ namespace RJM
 
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void labelUsuario_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void SALIDA_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("¿Estás seguro de cerrar sesión?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -207,6 +157,46 @@ namespace RJM
             }            
         }
 
+        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void iconoCerrar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Estás seguro de cerrar sesión?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void icnonoMinimizar_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconoRestaurar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                formSize = this.ClientSize;
+                this.WindowState = FormWindowState.Maximized;
+            }
+
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Size = formSize;
+            }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            AdjustForm();
+        }
         protected override void WndProc(ref Message m)
         {
             const int WM_NCCALCSIZE = 0x0083;//Standar Title Bar - Snap Window
@@ -298,5 +288,10 @@ namespace RJM
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
 
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        private void ALUMNOS_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formAlumnos());
+        }
     }
 }
