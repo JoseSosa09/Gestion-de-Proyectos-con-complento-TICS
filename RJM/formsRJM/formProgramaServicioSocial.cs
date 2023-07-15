@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RJM
+namespace RJM.formRJM
 {
-    public partial class formRJM : Form
+    public partial class formProgramaServicioSocial : Form
     {
-        public formRJM()
+        public formProgramaServicioSocial()
         {
             InitializeComponent();
         }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    public class Usuario
+    public class Maestro
     {
-
-        public string numeroControl { get; set; }
+        public string rfc { get; set; }
         public string nombreCompleto { get; set; }
         public string correo { get; set; }
         public string clave { get; set; }
         public Rol oRol { get; set; }
+        public bool estado { get; set; }
         public string fechaRegistro { get; set; }
     }
 }

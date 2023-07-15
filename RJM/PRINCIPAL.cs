@@ -18,35 +18,60 @@ namespace RJM
         private int borderSize = 3;
         private Size formSize; //Botones,Restaurar
         private static Usuario usuarioActual;
+        private static Maestro usuarioMaestro;
         private static Button MenuActivo = null;
         private static Form FormularioActivo = null;
 
 
         //Fields
-        public PRINCIPAL(Usuario objusuario)
+        public PRINCIPAL(Usuario objusuario, Maestro objmaestro)
         {
             usuarioActual = objusuario;
+            usuarioMaestro = objmaestro;
 
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+
         }
 
         private void PRINCIPAL_Load(object sender, EventArgs e)
         {
-            List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.numeroControl);
-
-            foreach (Button buttonMenu in panelMenu.Controls)
+            //Si es Usuario
+            if (usuarioActual != null)
             {
-                bool encontrado = ListaPermisos.Any(m => m.nombreMenu == buttonMenu.Name);
+                List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioActual.numeroControl);
 
-                if (encontrado == false)
+                foreach (Button buttonMenu in panelMenu.Controls)
                 {
-                    buttonMenu.Visible = false;
+                    bool encontrado = ListaPermisos.Any(m => m.nombreMenu == buttonMenu.Name);
+
+                    if (encontrado == false)
+                    {
+                        buttonMenu.Visible = false;
+                    }
                 }
+            
+                labelUsuario.Text = usuarioActual.nombreCompleto.ToString();
             }
+            //Si es Maestro
+            else
+            {
+                List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioMaestro.rfc);
+
+                foreach (Button buttonMenu in panelMenu.Controls)
+                {
+                    bool encontrado = ListaPermisos.Any(m => m.nombreMenu == buttonMenu.Name);
+
+                    if (encontrado == false)
+                    {
+                        buttonMenu.Visible = false;
+                    }
+                }
 
 
-            labelUsuario.Text = usuarioActual.nombreCompleto.ToString();
+                labelUsuario.Text = usuarioMaestro.nombreCompleto.ToString();
+            }
+            
         }
 
         public void abrirFormulario(Button menu, Form form)
@@ -73,6 +98,113 @@ namespace RJM
             contenedor.Controls.Add(form);
             form.Show();
 
+        }
+
+
+        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void iconoCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void icnonoMinimizar_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconoRestaurar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                formSize = this.ClientSize;
+                this.WindowState = FormWindowState.Maximized;
+            }
+
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Size = formSize;
+            }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            AdjustForm();
+        }
+
+        //Private methods
+        private void AdjustForm()
+        {
+            switch (this.WindowState)
+            {
+                case FormWindowState.Maximized: //Maximized form (After)
+                    this.Padding = new Padding(8, 8, 8, 0);
+                    break;
+                case FormWindowState.Normal: //Restored form (After)
+                    if (this.Padding.Top != borderSize)
+                        this.Padding = new Padding(borderSize);
+                    break;
+            }
+        }
+
+
+        private void btnTics_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formTICS());
+        }
+
+        private void btnRJM_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new FormRJM());
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formHome());
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formConfig());
+        }
+
+        private void btnEncuesta_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formEncuesta());
+        }
+
+        private void btnProyecto_Click(object sender, EventArgs e)
+        {
+
+            abrirFormulario((Button)sender, new formProyecto());
+
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void labelUsuario_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void SALIDA_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Estás seguro de cerrar sesión?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }            
         }
 
         protected override void WndProc(ref Message m)
@@ -160,113 +292,11 @@ namespace RJM
 
         }
 
-
-
-
         //Mover Panel Titulo
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
 
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void iconoCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void icnonoMinimizar_Click(object sender, EventArgs e)
-        {
-
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void iconoRestaurar_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                formSize = this.ClientSize;
-                this.WindowState = FormWindowState.Maximized;
-            }
-
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                this.Size = formSize;
-            }
-        }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            AdjustForm();
-        }
-
-        //Private methods
-        private void AdjustForm()
-        {
-            switch (this.WindowState)
-            {
-                case FormWindowState.Maximized: //Maximized form (After)
-                    this.Padding = new Padding(8, 8, 8, 0);
-                    break;
-                case FormWindowState.Normal: //Restored form (After)
-                    if (this.Padding.Top != borderSize)
-                        this.Padding = new Padding(borderSize);
-                    break;
-            }
-        }
-
-
-        private void btnTics_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formTICS());
-        }
-
-        private void btnRJM_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formRJM());
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formHome());
-        }
-
-        private void btnConfig_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formConfig());
-        }
-
-        private void btnEncuesta_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formEncuesta());
-        }
-
-        private void btnProyecto_Click(object sender, EventArgs e)
-        {
-
-            abrirFormulario((Button)sender, new formProyecto());
-
-        }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void labelUsuario_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-
     }
 }
