@@ -20,7 +20,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    string query = "Select numeroControl, nombreCompleto, correo, clave, estado from usuario";
+                    string query = "Select numeroControl, nombreCompleto, correo, clave from usuario";
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -35,7 +35,6 @@ namespace CapaDatos
                                 nombreCompleto = reader["nombreCompleto"].ToString(),
                                 correo = reader["correo"].ToString(),
                                 clave = reader["clave"].ToString(),
-                                estado = Convert.ToBoolean(reader["estado"])
                             });
 
                         }

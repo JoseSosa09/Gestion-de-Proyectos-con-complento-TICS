@@ -53,46 +53,76 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="formConfig.cs">
+    <Compile Include="formOpciones\formAlumnos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formConfig.Designer.cs">
+    <Compile Include="formOpciones\formAlumnos.Designer.cs">
+      <DependentUpon>formAlumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formOpciones\formConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formOpciones\formConfig.Designer.cs">
       <DependentUpon>formConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="formEncuesta.cs">
+    <Compile Include="formOpciones\formEncuesta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formEncuesta.Designer.cs">
+    <Compile Include="formOpciones\formEncuesta.Designer.cs">
       <DependentUpon>formEncuesta.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHome.cs">
+    <Compile Include="formOpciones\formHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHome.Designer.cs">
+    <Compile Include="formOpciones\formHome.Designer.cs">
       <DependentUpon>formHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="formProyecto.cs">
+    <Compile Include="formOpciones\formProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formProyecto.Designer.cs">
+    <Compile Include="formOpciones\formProyecto.Designer.cs">
       <DependentUpon>formProyecto.cs</DependentUpon>
     </Compile>
-    <Compile Include="formRJM.cs">
+    <Compile Include="formsRJM\formProgramaResidencias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formRJM.Designer.cs">
+    <Compile Include="formsRJM\formProgramaResidencias.Designer.cs">
+      <DependentUpon>formProgramaResidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formsRJM\formProgramaServicioSocial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formsRJM\formProgramaServicioSocial.Designer.cs">
+      <DependentUpon>formProgramaServicioSocial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formsRJM\formPropuestas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formsRJM\formPropuestas.Designer.cs">
+      <DependentUpon>formPropuestas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formsRJM\formProyectoIntegrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formsRJM\formProyectoIntegrador.Designer.cs">
+      <DependentUpon>formProyectoIntegrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formsRJM\formRJM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formsRJM\formRJM.Designer.cs">
       <DependentUpon>formRJM.cs</DependentUpon>
     </Compile>
-    <Compile Include="formTICS.cs">
+    <Compile Include="formOpciones\formTICS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formTICS.Designer.cs">
+    <Compile Include="formOpciones\formTICS.Designer.cs">
       <DependentUpon>formTICS.cs</DependentUpon>
     </Compile>
-    <Compile Include="LOGIN.cs">
+    <Compile Include="formLogin\LOGIN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LOGIN.Designer.cs">
+    <Compile Include="formLogin\LOGIN.Designer.cs">
       <DependentUpon>LOGIN.cs</DependentUpon>
     </Compile>
     <Compile Include="panel.cs">
@@ -112,31 +142,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="REGISTRO.cs">
+    <Compile Include="formLogin\REGISTRO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="REGISTRO.Designer.cs">
+    <Compile Include="formLogin\REGISTRO.Designer.cs">
       <DependentUpon>REGISTRO.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="formConfig.resx">
+    <EmbeddedResource Include="formOpciones\formAlumnos.resx">
+      <DependentUpon>formAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formOpciones\formConfig.resx">
       <DependentUpon>formConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formEncuesta.resx">
+    <EmbeddedResource Include="formOpciones\formEncuesta.resx">
       <DependentUpon>formEncuesta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHome.resx">
+    <EmbeddedResource Include="formOpciones\formHome.resx">
       <DependentUpon>formHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formProyecto.resx">
+    <EmbeddedResource Include="formOpciones\formProyecto.resx">
       <DependentUpon>formProyecto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formRJM.resx">
+    <EmbeddedResource Include="formsRJM\formProgramaResidencias.resx">
+      <DependentUpon>formProgramaResidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formsRJM\formProgramaServicioSocial.resx">
+      <DependentUpon>formProgramaServicioSocial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formsRJM\formPropuestas.resx">
+      <DependentUpon>formPropuestas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formsRJM\formProyectoIntegrador.resx">
+      <DependentUpon>formProyectoIntegrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formsRJM\formRJM.resx">
       <DependentUpon>formRJM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formTICS.resx">
+    <EmbeddedResource Include="formOpciones\formTICS.resx">
       <DependentUpon>formTICS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LOGIN.resx">
+    <EmbeddedResource Include="formLogin\LOGIN.resx">
       <DependentUpon>LOGIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PRINCIPAL.resx">
@@ -152,7 +197,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="REGISTRO.resx">
+    <EmbeddedResource Include="formLogin\REGISTRO.resx">
       <DependentUpon>REGISTRO.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -227,5 +272,6 @@
       <Name>CapaNegocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
