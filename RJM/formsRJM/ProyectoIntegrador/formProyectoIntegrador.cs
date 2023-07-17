@@ -31,13 +31,17 @@ namespace RJM.formRJM
             CN_ProyectoIntegrador integrador = new CN_ProyectoIntegrador();
             cBNombre.DisplayMember = "nombre";
             cBNombre.DataSource = integrador.CargarProgramaIntegrador();
+            cBNombre.DropDownStyle = ComboBoxStyle.DropDownList;
 
             cBAlumno.DisplayMember = "nombre";
             cBAlumno.DataSource = integrador.CargarAlumno();
+            cBAlumno.DropDownStyle = ComboBoxStyle.DropDownList;
 
             cBModalidad.DisplayMember = "modalidad";
-            cBModalidad.DataSource = integrador.CargarModalidad();            
+            cBModalidad.DataSource = integrador.CargarModalidad();
+            cBModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
         public void MostrarDatos()
         {
             dgvIntegrador.Rows.Clear();
