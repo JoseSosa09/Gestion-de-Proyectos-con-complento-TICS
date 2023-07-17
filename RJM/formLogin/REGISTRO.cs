@@ -13,53 +13,181 @@ namespace RJM
     {
         private ErrorProvider errorProvider;
         private static String error = "";
+        private String[] auxiliarMaestro = new string[7];
+        private String[] auxiliarMateria = new string[7];
+        private int aux = 0;
 
         public REGISTRO()
         {
-            InitializeComponent();            
+            InitializeComponent();
             errorProvider = new ErrorProvider();
+            cargarData();
         }
 
+        private void btnAceptar(object sender, EventArgs e)
+        {
+            try
+            {
+                LOGIN login = new LOGIN();                
+                CN_Alumno oalumno = new CN_Alumno();
+                CN_ALUMNO_MATERIA_MAESTRO omateria = new CN_ALUMNO_MATERIA_MAESTRO();
+
+                oalumno.RegistrarAlumno(textNombre.Text, textApellido.Text, textTelefono.Text, textEmail.Text, textNumeroControl.Text, textPassword.Text);
+                
+                for(int i = 0; i < auxiliarMateria.Length; i++)
+                {
+                    omateria.Insert(textNumeroControl.Text, auxiliarMateria[i], auxiliarMaestro[i]);
+                }
+
+                MessageBox.Show("Se ha registrado de manera correcta", "Registrado", MessageBoxButtons.OK);
+                this.Hide();
+                login.Show();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo insertar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnContinuar_Click(object sender, EventArgs e)
         {
 
             if (validarUsuarios() && camposVacios())
             {
-                try
-                {
-                    //LOGIN login = new LOGIN();
-                    //CN_Usuario ousuario = new CN_Usuario();
-                    //CN_Alumno oalumno = new CN_Alumno();
-                    //oalumno.RegistrarAlumno(textNombre.Text, textApellido.Text, textTelefono.Text, textNumeroControl.Text, textPassword.Text);
-                    //MessageBox.Show("Se ha insertado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
-                    //this.Hide();
-                    //login.Show();
-                    MessageBox.Show("Chingamos PA", "Accept", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                panelDPersonales.Visible = false;
+                panelMaterias.Visible = true;
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo insertar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             else
             {
-                MessageBox.Show("No se pudo insertar debido a que " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No puedes continuar. " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+
+        private void cargarData()
+        {
+            CN_Maestro maestro = new CN_Maestro();
+            cBMateria.DisplayMember = "nombre";
+            cBMateria.DataSource = maestro.dataTableMaterias();
+            cBMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cBMaestro.DisplayMember = "nombreCompleto";
+            cBMaestro.DataSource = maestro.dataTableMaestros();
+            cBMaestro.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void agregarMateria_Click(object sender, EventArgs e)
+        {
+            String materia = cBMateria.Text;
+            String maestro = cBMaestro.Text;
+
+            if (validarMateria(materia))
+            {
+                if (aux < 7)
+                {
+                    try
+                    {
+                        dgvMaterias.Rows.Add(new object[] { materia, maestro, "" });
+                        auxiliarMateria[aux] = materia;
+                        auxiliarMaestro[aux] = maestro;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex);
+                    }
+                    aux++;
+                }
+                else
+                {
+                    MessageBox.Show("Solamente puedes escoger 7 Materias", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("No puedes repetir materia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool validarMateria(String materia)
+        {        
+            for (int i = 0; i < auxiliarMateria.Length; i++)
+            {
+                if (auxiliarMateria[i] == materia)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void dgvMaterias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {            
+            if (dgvMaterias.Columns[e.ColumnIndex].Name == "borrarButton")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {                    
+                    if (indice != null)
+                    {
+                        if (MessageBox.Show("¿Estas seguro que deseas eliminarlo?", "Warning",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            dgvMaterias.Rows.RemoveAt(e.RowIndex);
+                            MessageBox.Show("Se ha eliminado de manera correcta", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            aux--;
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void dgvIntegrador_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == 2)
+            {
+
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = Properties.Resources.x_button.Width;
+                var h = Properties.Resources.x_button.Height;
+
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.x_button, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            panelMaterias.Visible = false;
+            panelDPersonales.Visible = true;
         }
 
         private bool camposVacios()
         {
-            if(textNombre.Text.Length < 4 || textNombre.Text == "NOMBRE") {
-                error = "es necesario llenar todos los campos";
-                return false;
-            }
-            else if(textApellido.Text.Length < 4 || textApellido.Text == "APELLIDO")
+            if (textNombre.Text.Length < 4 || textNombre.Text == "NOMBRE")
             {
                 error = "es necesario llenar todos los campos";
                 return false;
             }
-            else if(textTelefono.Text.Length < 4 || textTelefono.Text == "TELEFONO")
+            else if (textApellido.Text.Length < 4 || textApellido.Text == "APELLIDO")
+            {
+                error = "es necesario llenar todos los campos";
+                return false;
+            }
+            else if (textTelefono.Text.Length < 4 || textTelefono.Text == "TELEFONO")
             {
                 error = "es necesario llenar todos los campos";
 
@@ -89,24 +217,31 @@ namespace RJM
             }
         }
 
-        private bool validarUsuarios() {
+        private bool validarUsuarios()
+        {
             List<Alumno> alumnos = new CN_Alumno().Listar();
 
             String numeroControl = textNumeroControl.Text;
             String email = textEmail.Text;
+            String telefono = textTelefono.Text;
 
-            foreach(Alumno alumno in alumnos)
+            foreach (Alumno alumno in alumnos)
             {
                 if (alumno.numeroControl == numeroControl)
                 {
-                    error = "ya existe ese Número de Control";
+                    error = "Ya existe ese Número de Control";
                     return false;
                 }
-                if(alumno.email == email)
+                if (alumno.email == email)
                 {
-                    error = "ya existe ese Email";
+                    error = "Ya existe ese Email";
                     return false;
-                }                
+                }
+                if (alumno.telefono == telefono)
+                {
+                    error = "Ya existe ese Teléfono";
+                    return false;
+                }
             }
             return true;
 
@@ -115,13 +250,13 @@ namespace RJM
         private void validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            string id = textBox.Name; 
+            string id = textBox.Name;
             string texto = textBox.Text;
 
             switch (id)
             {
                 case "textNombre":
-                    if(!validarNombre(texto) || texto=="NOMBRE")
+                    if (!validarNombre(texto) || texto == "NOMBRE")
                     {
                         errorProvider.SetError(textBox, "Nombre Incorrecto");
                         e.Cancel = true;
@@ -129,21 +264,21 @@ namespace RJM
                     else
                     {
                         errorProvider.SetError(textBox, ""); // Eliminar el mensaje de error
-                        e.Cancel= false;
+                        e.Cancel = false;
                     }
                     break;
                 case "textApellido":
                     if (!validarNombre(texto) || texto == "APELLIDO")
                     {
                         errorProvider.SetError(textBox, "Apellido Incorrecto");
-                        e.Cancel = true;                        
+                        e.Cancel = true;
                     }
                     else
                     {
                         errorProvider.SetError(textBox, ""); // Eliminar el mensaje de error
                         e.Cancel = false;
                     }
-                    break;                    
+                    break;
                 case "textTelefono":
                     if (!validarNumeroTelefono(texto) || texto == "TELEFONO")
                     {
@@ -180,7 +315,7 @@ namespace RJM
                         e.Cancel = false;
                     }
                     break;
-            }        
+            }
         }
 
         private bool validarNombre(String nombre)
@@ -200,12 +335,12 @@ namespace RJM
             string patron = @"^[0-9()+-]+$";
             return Regex.IsMatch(numeroTelefono, patron);
         }
+
         private bool validarNumeroControl(String numeroTelefono)
         {
             string patron = @"^\d{8}$";
             return Regex.IsMatch(numeroTelefono, patron);
         }
-
 
         private void textNombre_Enter(object sender, EventArgs e)
         {
@@ -310,6 +445,7 @@ namespace RJM
                 textNumeroControl.ForeColor = Color.White;
             }
         }
+
         private void tBEmail_Enter(object sender, EventArgs e)
         {
             if (textEmail.Text == "EMAIL")
@@ -375,7 +511,12 @@ namespace RJM
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
         private void registrateCerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult result = MessageBox.Show("¿Estás seguro de cerrar la ventana?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void registrateMinimizar_Click(object sender, EventArgs e)
@@ -407,6 +548,5 @@ namespace RJM
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
     }
 }
