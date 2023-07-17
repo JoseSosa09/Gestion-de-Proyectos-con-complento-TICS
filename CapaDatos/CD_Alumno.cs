@@ -48,7 +48,7 @@ namespace CapaDatos
                 return lista;
             }
 
-            public void RegistrarAlumno(String nombre, String apellido, String telefono, String numeroControl, String password)
+            public void RegistrarAlumno(String nombre, String apellido, String telefono, String email, String numeroControl, String password)
             {
                 String nombreCompleto = nombre + " " + apellido;
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
@@ -58,6 +58,7 @@ namespace CapaDatos
                     comando.CommandText = "SP_REGISTRAR_ALUMNO";
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@nombre", nombreCompleto);
+                    comando.Parameters.AddWithValue("@email", email);
                     comando.Parameters.AddWithValue("@telefono", telefono);
                     comando.Parameters.AddWithValue("@numeroControl", numeroControl);
                     comando.Parameters.AddWithValue("@clave", password);

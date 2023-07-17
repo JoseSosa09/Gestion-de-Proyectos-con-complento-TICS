@@ -16,9 +16,10 @@ namespace CapaNegocio
         {
             return objcd_alumno.Listar();
         }
-        public void RegistrarAlumno(String nombre, String apellido, String email, String numeroControl, String password)
+        
+        public void RegistrarAlumno(String nombre, String apellido, String telefono, String email, String numeroControl, String password)
         {
-            objcd_alumno.RegistrarAlumno(nombre, apellido, email, numeroControl, password);
+            objcd_alumno.RegistrarAlumno(nombre, apellido, telefono, email, numeroControl, password);
         }
     }
 }

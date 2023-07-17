@@ -51,7 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.borrarProyecto = new FontAwesome.Sharp.IconButton();
-            this.auxiliarNumeroControl = new System.Windows.Forms.Label();
             this.cBNumeroControlAuxiliar = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntegrador)).BeginInit();
             this.SuspendLayout();
@@ -323,16 +322,6 @@
             this.borrarProyecto.UseVisualStyleBackColor = false;
             this.borrarProyecto.Click += new System.EventHandler(this.borrarProyecto_Click);
             // 
-            // auxiliarNumeroControl
-            // 
-            this.auxiliarNumeroControl.AutoSize = true;
-            this.auxiliarNumeroControl.Location = new System.Drawing.Point(1096, 40);
-            this.auxiliarNumeroControl.Name = "auxiliarNumeroControl";
-            this.auxiliarNumeroControl.Size = new System.Drawing.Size(44, 16);
-            this.auxiliarNumeroControl.TabIndex = 43;
-            this.auxiliarNumeroControl.Text = "label4";
-            this.auxiliarNumeroControl.Visible = false;
-            // 
             // cBNumeroControlAuxiliar
             // 
             this.cBNumeroControlAuxiliar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
@@ -353,7 +342,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1319, 578);
             this.Controls.Add(this.cBNumeroControlAuxiliar);
-            this.Controls.Add(this.auxiliarNumeroControl);
             this.Controls.Add(this.borrarProyecto);
             this.Controls.Add(this.agregarProyectoIntegrador);
             this.Controls.Add(this.cBModalidad);
@@ -393,7 +381,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn modalidad;
         private System.Windows.Forms.DataGridViewButtonColumn editarButton;
         private System.Windows.Forms.DataGridViewButtonColumn borrarButton;
-        private System.Windows.Forms.Label auxiliarNumeroControl;
         private System.Windows.Forms.ComboBox cBNumeroControlAuxiliar;
     }
 }

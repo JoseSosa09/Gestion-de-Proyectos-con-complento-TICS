@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CD_Alumno.cs" />
+    <Compile Include="CD_AlumnoMateriaMaestro.cs" />
     <Compile Include="CD_ControlProyectoIntegrador.cs" />
     <Compile Include="CD_Maestro.cs" />
+    <Compile Include="CD_Materia.cs" />
     <Compile Include="CD_Permiso.cs" />
     <Compile Include="CD_ProyectoIntegrador.cs" />
     <Compile Include="CD_ProyectoPropuesta.cs" />
