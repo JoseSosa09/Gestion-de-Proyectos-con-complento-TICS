@@ -57,6 +57,7 @@
             // 
             // dgvIntegrador
             // 
+            this.dgvIntegrador.AllowUserToAddRows = false;
             this.dgvIntegrador.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;

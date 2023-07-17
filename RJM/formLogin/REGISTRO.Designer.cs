@@ -605,8 +605,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.ClientSize = new System.Drawing.Size(502, 538);
-            this.Controls.Add(this.panelMaterias);
             this.Controls.Add(this.panelDPersonales);
+            this.Controls.Add(this.panelMaterias);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "REGISTRO";
             this.Opacity = 0.85D;

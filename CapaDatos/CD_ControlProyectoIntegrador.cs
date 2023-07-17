@@ -153,7 +153,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNO_CONTROL_PROYECTO_INTEGRADOR", oconexion);
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_CONTROL_PROYECTO_INTEGRADOR", oconexion);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
 
@@ -216,7 +216,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("SP_SELECT_NAME_CONTROL_PROYECTO_INTEGRADOR", oconexion);
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_CONTROL_PROYECTO_INTEGRADOR", oconexion);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())

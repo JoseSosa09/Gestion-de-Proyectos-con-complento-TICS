@@ -39,7 +39,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    SqlDataAdapter datos = new SqlDataAdapter("SP_MODALIDAD_SELECT", oconexion);
+                    SqlDataAdapter datos = new SqlDataAdapter("SP_SELECT_MODALIDAD", oconexion);
                     datos.SelectCommand.CommandType = CommandType.StoredProcedure;
                     datos.Fill(dt);
                 }
