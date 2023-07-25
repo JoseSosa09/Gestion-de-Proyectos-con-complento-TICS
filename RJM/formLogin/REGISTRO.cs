@@ -34,7 +34,7 @@ namespace RJM
 
                 oalumno.RegistrarAlumno(textNombre.Text, textApellido.Text, textTelefono.Text, textEmail.Text, textNumeroControl.Text, textPassword.Text);
                 
-                for(int i = 0; i < auxiliarMateria.Length; i++)
+                for(int i = 0; i < aux; i++)
                 {
                     omateria.Insert(textNumeroControl.Text, auxiliarMateria[i], auxiliarMaestro[i]);
                 }
@@ -96,7 +96,7 @@ namespace RJM
                     {
                         MessageBox.Show("Error: " + ex);
                     }
-                    aux++;
+                    aux++;                    
                 }
                 else
                 {
@@ -256,7 +256,7 @@ namespace RJM
             switch (id)
             {
                 case "textNombre":
-                    if (!validarNombre(texto) || texto == "NOMBRE")
+                    if (!validarNombre(texto) || texto == "NOMBRE" || texto.Length < 4)
                     {
                         errorProvider.SetError(textBox, "Nombre Incorrecto");
                         e.Cancel = true;
@@ -268,7 +268,7 @@ namespace RJM
                     }
                     break;
                 case "textApellido":
-                    if (!validarNombre(texto) || texto == "APELLIDO")
+                    if (!validarNombre(texto) || texto == "APELLIDO" || texto.Length < 4)
                     {
                         errorProvider.SetError(textBox, "Apellido Incorrecto");
                         e.Cancel = true;
@@ -304,7 +304,7 @@ namespace RJM
                     }
                     break;
                 case "textEmail":
-                    if (!validarEmail(texto) || texto == "EMAIL")
+                    if (!validarEmail(texto) || texto == "EMAIL" || texto.Length < 11)
                     {
                         errorProvider.SetError(textBox, "Email Incorrecto");
                         e.Cancel = true;

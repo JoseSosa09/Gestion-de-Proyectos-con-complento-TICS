@@ -224,11 +224,7 @@ namespace RJM.formRJM
             MostrarIntegrador();
             dgvTodas.Visible = true;
         }
-
-        private void textBoxBuscar_KeyDown(object sender, KeyEventArgs e)
-        {
-          
-        }
+        
         public void MostrarBusqueda(string dato)
         {
             dgvTodas.Rows.Clear();

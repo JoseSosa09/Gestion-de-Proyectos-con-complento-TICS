@@ -16,7 +16,17 @@ namespace CapaNegocio
         {
             return objcd_alumno.Listar();
         }
-        
+
+        public List<Alumno> Listar_X_Maestro(String maestro)
+        {
+            return objcd_alumno.Listar_X_Maestro(maestro);
+        }
+
+        public List<Alumno> Listar_X_Palabra(String query)
+        {
+            return objcd_alumno.leer_datos(query);
+        }
+
         public void RegistrarAlumno(String nombre, String apellido, String telefono, String email, String numeroControl, String password)
         {
             objcd_alumno.RegistrarAlumno(nombre, apellido, telefono, email, numeroControl, password);

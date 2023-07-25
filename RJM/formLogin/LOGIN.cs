@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CapaNegocio;
@@ -15,11 +12,13 @@ namespace RJM
 {
     public partial class LOGIN : Form
     {
+        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         public LOGIN()
         {
             InitializeComponent();
-
         }
+
         //Mover Panel Titulo
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -117,7 +116,11 @@ namespace RJM
 
             else if (omaestro != null)
             {
-                PRINCIPAL form = new PRINCIPAL(oalumno, omaestro);
+                config.AppSettings.Settings["maestro"].Value = omaestro.nombreCompleto;
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+
+                PRINCIPAL form = new PRINCIPAL(oalumno, omaestro);                
                 form.Show();
                 this.Hide();
                 form.FormClosing += formRegresarLoginPrincipal;
