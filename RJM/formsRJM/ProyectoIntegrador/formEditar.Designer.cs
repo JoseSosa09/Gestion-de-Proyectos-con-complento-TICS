@@ -193,11 +193,11 @@
             this.label.BackColor = System.Drawing.Color.Transparent;
             this.label.Font = new System.Drawing.Font("Century Schoolbook", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
             this.label.ForeColor = System.Drawing.Color.Black;
-            this.label.Location = new System.Drawing.Point(135, 25);
+            this.label.Location = new System.Drawing.Point(240, 27);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(410, 35);
+            this.label.Size = new System.Drawing.Size(189, 35);
             this.label.TabIndex = 14;
-            this.label.Text = "PROYECTO INTEGRADOR";
+            this.label.Text = "PROYECTO";
             this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_MouseDown);
             // 
             // label5

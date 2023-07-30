@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
 using CapaEntidad;
@@ -31,7 +25,8 @@ namespace RJM.formRJM
         {
             CN_ServicioSocial social = new CN_ServicioSocial();
             cBNombre.DisplayMember = "nombrePrograma";
-            cBNombre.DataSource = social.CargarComboBox(); 
+            cBNombre.DataSource = social.CargarComboBox();
+            cBNombre.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void cBNombre_SelectedIndexChanged(object sender, EventArgs e)
