@@ -16,6 +16,8 @@ namespace CapaEntidad
         public string maestro { get; set; }
         public string email{ get; set; }
         public string materia{ get; set; }
+        public string proyecto{ get; set; }
+        public string categoria { get; set; }
         public string fechaCreacion { get; set; }
         public int idrol { get; set; }
         

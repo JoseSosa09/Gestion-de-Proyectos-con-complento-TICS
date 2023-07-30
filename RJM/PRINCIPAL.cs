@@ -32,10 +32,13 @@ namespace RJM
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
+            abrirFormulario(RJM, new FormRJM());
+
         }
 
         private void PRINCIPAL_Load(object sender, EventArgs e)
         {
+            
             //Si es Usuario
             if (usuarioActual != null)
             {

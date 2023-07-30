@@ -52,6 +52,26 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable CargarCategoria()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    SqlDataAdapter datos = new SqlDataAdapter("SP_SELECT_CATEGORIA", oconexion);
+                    datos.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    datos.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            return dt;
+        }
+
         public DataTable CargarAlumnos()
         {
             DataTable dt = new DataTable();

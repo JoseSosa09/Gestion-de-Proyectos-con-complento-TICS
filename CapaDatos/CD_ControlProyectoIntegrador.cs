@@ -12,7 +12,7 @@ namespace CapaDatos
 {
     public class CD_ControlProyectoIntegrador
     {
-        public List<ControlProyectoIntegrador> Insertar(int idProyectoPropuesta, string nombre, string alumno, string numeroControl, string modalidad, string responsable)
+        public List<ControlProyectoIntegrador> Insertar(int idProyectoPropuesta, string nombre, string alumno, string numeroControl, string modalidad, string responsable, string categoria)
         {
             List<ControlProyectoIntegrador> lista = new List<ControlProyectoIntegrador>();
 
@@ -27,6 +27,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@numeroControl", numeroControl);                                       
                     cmd.Parameters.AddWithValue("@modalidad", modalidad);
                     cmd.Parameters.AddWithValue("@responsable", responsable);
+                    cmd.Parameters.AddWithValue("@categoria", categoria);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
 
@@ -43,6 +44,7 @@ namespace CapaDatos
                                 numeroControl = reader["numeroControl"].ToString(),
                                 modalidad = reader["modalidad"].ToString(),                                
                                 responsable = reader["responsable"].ToString(),
+                                categoria = reader["categoria"].ToString(),
                             });
                         }
                     }
@@ -133,6 +135,7 @@ namespace CapaDatos
                                 alumno = reader["alumno"].ToString(),                                
                                 numeroControl = reader["numeroControl"].ToString(),
                                 modalidad = reader["modalidad"].ToString(),                                
+                                categoria = reader["categoria"].ToString(),
                             });
                         }
                     }
@@ -176,7 +179,34 @@ namespace CapaDatos
             }
             return lista;
         }
-        
+
+        public String BuscarProyecto(String numeroControl)
+        {
+            String proyecto = "";
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_PROYECTO_CONTROL_PROYECTO_INTEGRADOR", oconexion);
+                    cmd.Parameters.AddWithValue("@numeroControl", numeroControl);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        proyecto = reader["nombre"].ToString();                           
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            return proyecto;
+        }
+
+
         public List<Alumno> NombreRepetidoAlumnos(String nombre)
         {
             List<Alumno> lista = new List<Alumno>();

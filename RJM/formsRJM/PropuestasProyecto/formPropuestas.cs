@@ -25,6 +25,11 @@ namespace RJM.formRJM
                InitializeComponent();
         }
 
+        private void formPropuestas_Load(object sender, EventArgs e)
+        {
+            MostrarDatos();
+        }
+
         public void MostrarDatos()
          {
             dgvTodas.Rows.Clear();
@@ -36,6 +41,7 @@ namespace RJM.formRJM
                 item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
             }
         }
+
         public void MostrarServicio()
         {
             dgvTodas.Rows.Clear();
@@ -47,6 +53,7 @@ namespace RJM.formRJM
                 item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
             }
         }
+
         public void MostrarIntegrador()
         {
             dgvTodas.Rows.Clear();
@@ -339,6 +346,6 @@ namespace RJM.formRJM
                 MessageBox.Show("Seleccione una fila por favor");
             }
         }
-      
+        
     }
 }

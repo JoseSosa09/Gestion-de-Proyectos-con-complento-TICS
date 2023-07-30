@@ -86,7 +86,7 @@
             this.btnProyectoIntegrador.Name = "btnProyectoIntegrador";
             this.btnProyectoIntegrador.Size = new System.Drawing.Size(200, 58);
             this.btnProyectoIntegrador.TabIndex = 4;
-            this.btnProyectoIntegrador.Text = "Proyecto Integrador";
+            this.btnProyectoIntegrador.Text = "Asignar Proyecto";
             this.btnProyectoIntegrador.UseVisualStyleBackColor = false;
             this.btnProyectoIntegrador.Click += new System.EventHandler(this.btnProyectoIntegrador_Click);
             // 

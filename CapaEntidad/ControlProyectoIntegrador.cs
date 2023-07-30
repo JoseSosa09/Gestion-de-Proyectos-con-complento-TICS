@@ -15,6 +15,7 @@ namespace CapaEntidad
         public string numeroControl { get; set; }
         public string modalidad { get; set; }
         public string responsable { get; set; }
+        public string categoria { get; set; }
 
     }
 }

@@ -11,9 +11,9 @@ namespace CapaNegocio
 {
     public class CN_ControlProyectoIntegrador
     {
-        public List<ControlProyectoIntegrador> Insertar(int idProyectoPropuesta, string nombre, string alumno, string numeroControl, string modalidad, string responsable)
+        public List<ControlProyectoIntegrador> Insertar(int idProyectoPropuesta, string nombre, string alumno, string numeroControl, string modalidad, string responsable, string categoria)
         {
-            List<ControlProyectoIntegrador> lista = new CD_ControlProyectoIntegrador().Insertar(idProyectoPropuesta, nombre, alumno, numeroControl, modalidad, responsable);
+            List<ControlProyectoIntegrador> lista = new CD_ControlProyectoIntegrador().Insertar(idProyectoPropuesta, nombre, alumno, numeroControl, modalidad, responsable, categoria);
 
             return lista;
         }
@@ -37,12 +37,21 @@ namespace CapaNegocio
 
             return lista;
         }
+        
         public List<Alumno> BuscarAlumno()
         {
             List<Alumno> lista = new CD_ControlProyectoIntegrador().BuscarAlumno();
 
             return lista;
         }
+
+        public String BuscarProyecto(String numeroControl)
+        {
+            String proyecto = new CD_ControlProyectoIntegrador().BuscarProyecto(numeroControl);            
+
+            return proyecto;
+        }
+
         public List<Alumno> NombreRepetidoAlumnos(String nombre)
         {
             List<Alumno> lista = new CD_ControlProyectoIntegrador().NombreRepetidoAlumnos(nombre);

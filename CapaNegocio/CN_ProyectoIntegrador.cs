@@ -47,6 +47,16 @@ namespace CapaNegocio
             return dt;
 
         }
+
+        public DataTable CargarCategoria()
+        {
+            CD_ProyectoIntegrador integrador = new CD_ProyectoIntegrador();
+            DataTable dt = new DataTable();
+            dt = integrador.CargarCategoria();
+            return dt;
+
+        }
+
         public void Delete(string nombre)
         {
             CD_ProyectoIntegrador integrador = new CD_ProyectoIntegrador();

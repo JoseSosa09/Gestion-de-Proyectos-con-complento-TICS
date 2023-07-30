@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new RJM.panel();
-            this.btnBorrarProyecto = new System.Windows.Forms.Button();
+            this.cBModalidad = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tBNumeroControl = new System.Windows.Forms.TextBox();
+            this.tBProyecto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tBNombre = new System.Windows.Forms.TextBox();
             this.iconoCerrar = new FontAwesome.Sharp.IconButton();
@@ -42,8 +45,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tBProyecto = new System.Windows.Forms.TextBox();
-            this.tBNumeroControl = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,9 +52,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderRadius = 30;
+            this.panel1.Controls.Add(this.cBModalidad);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.tBNumeroControl);
             this.panel1.Controls.Add(this.tBProyecto);
-            this.panel1.Controls.Add(this.btnBorrarProyecto);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tBNombre);
             this.panel1.Controls.Add(this.iconoCerrar);
@@ -76,22 +78,50 @@
             this.panel1.TabIndex = 57;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // btnBorrarProyecto
+            // cBModalidad
             // 
-            this.btnBorrarProyecto.BackColor = System.Drawing.Color.Firebrick;
-            this.btnBorrarProyecto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBorrarProyecto.FlatAppearance.BorderSize = 0;
-            this.btnBorrarProyecto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.btnBorrarProyecto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnBorrarProyecto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrarProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrarProyecto.ForeColor = System.Drawing.Color.Black;
-            this.btnBorrarProyecto.Location = new System.Drawing.Point(477, 320);
-            this.btnBorrarProyecto.Name = "btnBorrarProyecto";
-            this.btnBorrarProyecto.Size = new System.Drawing.Size(108, 34);
-            this.btnBorrarProyecto.TabIndex = 59;
-            this.btnBorrarProyecto.Text = "BORRAR";
-            this.btnBorrarProyecto.UseVisualStyleBackColor = false;
+            this.cBModalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBModalidad.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.cBModalidad.Location = new System.Drawing.Point(190, 312);
+            this.cBModalidad.MaxLength = 255;
+            this.cBModalidad.Name = "cBModalidad";
+            this.cBModalidad.ReadOnly = true;
+            this.cBModalidad.Size = new System.Drawing.Size(393, 28);
+            this.cBModalidad.TabIndex = 63;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(52, 312);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(140, 25);
+            this.label4.TabIndex = 62;
+            this.label4.Text = "Modalidad:";
+            // 
+            // tBNumeroControl
+            // 
+            this.tBNumeroControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBNumeroControl.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.tBNumeroControl.Location = new System.Drawing.Point(191, 161);
+            this.tBNumeroControl.MaxLength = 255;
+            this.tBNumeroControl.Name = "tBNumeroControl";
+            this.tBNumeroControl.ReadOnly = true;
+            this.tBNumeroControl.Size = new System.Drawing.Size(393, 28);
+            this.tBNumeroControl.TabIndex = 61;
+            // 
+            // tBProyecto
+            // 
+            this.tBProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBProyecto.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.tBProyecto.Location = new System.Drawing.Point(191, 267);
+            this.tBProyecto.MaxLength = 255;
+            this.tBProyecto.Name = "tBProyecto";
+            this.tBProyecto.ReadOnly = true;
+            this.tBProyecto.Size = new System.Drawing.Size(393, 28);
+            this.tBProyecto.TabIndex = 60;
             // 
             // label1
             // 
@@ -112,6 +142,7 @@
             this.tBNombre.Location = new System.Drawing.Point(190, 108);
             this.tBNombre.MaxLength = 255;
             this.tBNombre.Name = "tBNombre";
+            this.tBNombre.ReadOnly = true;
             this.tBNombre.Size = new System.Drawing.Size(393, 28);
             this.tBNombre.TabIndex = 57;
             // 
@@ -214,6 +245,7 @@
             this.tBMateria.Location = new System.Drawing.Point(191, 215);
             this.tBMateria.MaxLength = 255;
             this.tBMateria.Name = "tBMateria";
+            this.tBMateria.ReadOnly = true;
             this.tBMateria.Size = new System.Drawing.Size(393, 28);
             this.tBMateria.TabIndex = 20;
             this.tBMateria.Validating += new System.ComponentModel.CancelEventHandler(this.validarTextBox);
@@ -268,26 +300,6 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Número Control:";
             // 
-            // tBProyecto
-            // 
-            this.tBProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBProyecto.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tBProyecto.Location = new System.Drawing.Point(191, 267);
-            this.tBProyecto.MaxLength = 255;
-            this.tBProyecto.Name = "tBProyecto";
-            this.tBProyecto.Size = new System.Drawing.Size(393, 28);
-            this.tBProyecto.TabIndex = 60;
-            // 
-            // tBNumeroControl
-            // 
-            this.tBNumeroControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBNumeroControl.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tBNumeroControl.Location = new System.Drawing.Point(191, 161);
-            this.tBNumeroControl.MaxLength = 255;
-            this.tBNumeroControl.Name = "tBNumeroControl";
-            this.tBNumeroControl.Size = new System.Drawing.Size(393, 28);
-            this.tBNumeroControl.TabIndex = 61;
-            // 
             // formInfoAlumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -320,9 +332,10 @@
         private FontAwesome.Sharp.IconButton iconoCerrar;
         private panel panel1;
         public System.Windows.Forms.TextBox tBNombre;
-        public System.Windows.Forms.Button btnBorrarProyecto;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox tBNumeroControl;
         public System.Windows.Forms.TextBox tBProyecto;
+        public System.Windows.Forms.TextBox cBModalidad;
+        public System.Windows.Forms.Label label4;
     }
 }
