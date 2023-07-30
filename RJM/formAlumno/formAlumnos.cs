@@ -53,7 +53,7 @@ namespace RJM
 
                 foreach (Alumno item in lista)
                 {
-                    dgvTodas.Rows.Add(new object[] {item.nombre, item.numeroControl,item.telefono, item.materia, item.email,
+                    dgvTodas.Rows.Add(new object[] {item.id,item.nombre, item.numeroControl,item.telefono, item.materia, item.email,
                     item.fechaCreacion,""});
                 }
             }
@@ -72,7 +72,7 @@ namespace RJM
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 7)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -92,35 +92,28 @@ namespace RJM
         {
             if (dgvTodas.Columns[e.ColumnIndex].Name == "informacionAlumno")
             {
-                formInsertarPropuesta form = new formInsertarPropuesta();
-                int indice = e.RowIndex;
-                MessageBox.Show("" + indice, "INDICE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                formInfoAlumno form = new formInfoAlumno();
+                int indice = e.RowIndex;                
                 if (indice >= 0)
                 {
-                    //id = dgvTodas.Rows[indice].Cells["IdCategoria"].Value?.ToString();
+                    String id = dgvTodas.Rows[indice].Cells["id"].Value?.ToString();
 
-                    //if (id != null)
-                    //{
-                    //    form.btnGuardar.Visible = true;
-                    //    form.label.Text = "Editar Propuesta";
+                    if (id != null)
+                    {
+                        form.tBId.Text = dgvTodas.Rows[indice].Cells["id"].Value.ToString();                        
+                        form.tBNombre.Text = dgvTodas.Rows[indice].Cells["nombre"].Value.ToString();
+                        form.tBMateria.Text = dgvTodas.Rows[indice].Cells["materia"].Value.ToString();
+                        form.tBNumeroControl.Text = dgvTodas.Rows[indice].Cells["numeroControl"].Value.ToString();
+                        
 
-                    //    form.tBId.Text = dgvTodas.Rows[indice].Cells["IdCategoria"].Value.ToString();
-                    //    form.cBCategoria.Text = dgvTodas.Rows[indice].Cells["categoria"].Value.ToString();
-                    //    form.cBEstatus.Text = dgvTodas.Rows[indice].Cells["estatus"].Value.ToString();
-                    //    form.tBNombre.Text = dgvTodas.Rows[indice].Cells["nombre"].Value.ToString();
-                    //    form.tBResponsable.Text = dgvTodas.Rows[indice].Cells["nombreMaestro"].Value.ToString();
-                    //    form.tBColaboradores.Text = dgvTodas.Rows[indice].Cells["colaboradores"].Value.ToString();
-                    //    form.tBAlumnos.Text = dgvTodas.Rows[indice].Cells["numAlumnos"].Value.ToString();
-                    //    form.tBDescripcion.Text = dgvTodas.Rows[indice].Cells["nombreAlumno"].Value.ToString();
+                        form.Show();
 
-                    //    form.Show();
-
-                    //    //MostrarDatos();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
+                        //MostrarDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

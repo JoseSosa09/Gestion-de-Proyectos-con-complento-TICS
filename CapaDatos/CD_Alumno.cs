@@ -101,7 +101,7 @@ namespace CapaDatos
                     {
                         SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_X_MAESTRO", oconexion);
                         cmd.Parameters.AddWithValue("@maestro", maestro);
-                        cmd.CommandType = CommandType.StoredProcedure;
+                      cmd.CommandType = CommandType.StoredProcedure;
                         oconexion.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -110,7 +110,7 @@ namespace CapaDatos
                             {
                                 lista.Add(new Alumno()
                                 {
-                                    id = Convert.ToInt32(reader["ID"].ToString()),
+                                    id = Convert.ToInt32(reader["id"].ToString()),
                                     numeroControl = reader["numeroControl"].ToString(),
                                     nombre = reader["nombre"].ToString(),
                                     telefono = reader["telefono"].ToString(),                                    

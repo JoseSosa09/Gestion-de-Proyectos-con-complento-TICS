@@ -72,6 +72,12 @@
     <Compile Include="formAlumno\formAlumnos.Designer.cs">
       <DependentUpon>formAlumnos.cs</DependentUpon>
     </Compile>
+    <Compile Include="formAlumno\formInfoAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAlumno\formInfoAlumno.Designer.cs">
+      <DependentUpon>formInfoAlumno.cs</DependentUpon>
+    </Compile>
     <Compile Include="formOpciones\formConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </Compile>
     <EmbeddedResource Include="formAlumno\formAlumnos.resx">
       <DependentUpon>formAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formAlumno\formInfoAlumno.resx">
+      <DependentUpon>formInfoAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formOpciones\formConfig.resx">
       <DependentUpon>formConfig.cs</DependentUpon>
