@@ -102,10 +102,10 @@
     <Compile Include="formOpciones\formProyecto.Designer.cs">
       <DependentUpon>formProyecto.cs</DependentUpon>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formEditar.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formEditar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formEditar.Designer.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formEditar.Designer.cs">
       <DependentUpon>formEditar.cs</DependentUpon>
     </Compile>
     <Compile Include="formsRJM\PropuestasProyecto\formInsertarPropuesta.cs">
@@ -114,10 +114,10 @@
     <Compile Include="formsRJM\PropuestasProyecto\formInsertarPropuesta.Designer.cs">
       <DependentUpon>formInsertarPropuesta.cs</DependentUpon>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formInsertarProyectoIntegrador.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formInsertarProyectoIntegrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formInsertarProyectoIntegrador.Designer.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formInsertarProyectoIntegrador.Designer.cs">
       <DependentUpon>formInsertarProyectoIntegrador.cs</DependentUpon>
     </Compile>
     <Compile Include="formsRJM\ServicioSocial\formInsertarServicioSocial.cs">
@@ -144,10 +144,10 @@
     <Compile Include="formsRJM\PropuestasProyecto\formPropuestas.Designer.cs">
       <DependentUpon>formPropuestas.cs</DependentUpon>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formProyectoIntegrador.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formProyectoIntegrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formsRJM\ProyectoIntegrador\formProyectoIntegrador.Designer.cs">
+    <Compile Include="formsRJM\Asignar Proyecto\formProyectoIntegrador.Designer.cs">
       <DependentUpon>formProyectoIntegrador.cs</DependentUpon>
     </Compile>
     <Compile Include="formsRJM\formRJM.cs">
@@ -209,13 +209,13 @@
     <EmbeddedResource Include="formOpciones\formProyecto.resx">
       <DependentUpon>formProyecto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formsRJM\ProyectoIntegrador\formEditar.resx">
+    <EmbeddedResource Include="formsRJM\Asignar Proyecto\formEditar.resx">
       <DependentUpon>formEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formsRJM\PropuestasProyecto\formInsertarPropuesta.resx">
       <DependentUpon>formInsertarPropuesta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formsRJM\ProyectoIntegrador\formInsertarProyectoIntegrador.resx">
+    <EmbeddedResource Include="formsRJM\Asignar Proyecto\formInsertarProyectoIntegrador.resx">
       <DependentUpon>formInsertarProyectoIntegrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formsRJM\ServicioSocial\formInsertarServicioSocial.resx">
@@ -230,7 +230,7 @@
     <EmbeddedResource Include="formsRJM\PropuestasProyecto\formPropuestas.resx">
       <DependentUpon>formPropuestas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formsRJM\ProyectoIntegrador\formProyectoIntegrador.resx">
+    <EmbeddedResource Include="formsRJM\Asignar Proyecto\formProyectoIntegrador.resx">
       <DependentUpon>formProyectoIntegrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formsRJM\formRJM.resx">

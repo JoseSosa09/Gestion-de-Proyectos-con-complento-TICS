@@ -11,11 +11,16 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Windows.Forms;
 using RJM.formsRJM;
+using System.Runtime.Remoting.Messaging;
 
 namespace RJM
-{
+{ 
     public partial class formAlumnos : Form
     {
+        private String maestro = ConfigurationManager.AppSettings["maestro"];
+        private CN_Alumno alumno = new CN_Alumno();
+        private List<Alumno> listAlumno;
+
         public formAlumnos()
         {
             InitializeComponent();
@@ -28,13 +33,11 @@ namespace RJM
 
         public void cargarDatos()
         {
-            String maestro = ConfigurationManager.AppSettings["maestro"];
-            CN_Alumno alumno = new CN_Alumno();           
-            List<Alumno> listAlumno = alumno.Listar_X_Maestro(maestro);
 
+            listAlumno = alumno.Listar_X_Maestro(maestro);
             foreach (Alumno item in listAlumno)
             {
-                dgvTodas.Rows.Add(new object[] {item.id, item.nombre, item.numeroControl,item.telefono, item.materia, item.email,
+                dgvTodas.Rows.Add(new object[] {item.id, item.nombre, item.numeroControl,item.telefono, item.materia, item.proyecto, item.email,
                     item.fechaCreacion,""});
             }
         }
@@ -53,7 +56,7 @@ namespace RJM
 
                 foreach (Alumno item in lista)
                 {
-                    dgvTodas.Rows.Add(new object[] {item.id,item.nombre, item.numeroControl,item.telefono, item.materia, item.email,
+                    dgvTodas.Rows.Add(new object[] {item.id,item.nombre, item.numeroControl,item.telefono, item.materia, item.proyecto, item.email,
                     item.fechaCreacion,""});
                 }
             }
@@ -72,7 +75,7 @@ namespace RJM
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 8)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -96,15 +99,29 @@ namespace RJM
                 int indice = e.RowIndex;                
                 if (indice >= 0)
                 {
-                    String id = dgvTodas.Rows[indice].Cells["id"].Value?.ToString();
-
+                    String id = dgvTodas.Rows[indice].Cells["id"].Value?.ToString();                    
+                    String numeroControl = dgvTodas.Rows[indice].Cells["numeroControl"].Value.ToString();
                     if (id != null)
                     {
-                        form.tBId.Text = dgvTodas.Rows[indice].Cells["id"].Value.ToString();                        
+                        String categoria = "";
+                        foreach(Alumno item in listAlumno)
+                        {
+                            if(numeroControl == item.numeroControl)
+                            {
+                                categoria = item.categoria;
+                                break;
+                            }
+                        }
+
+
+                        form.tBId.Text = dgvTodas.Rows[indice].Cells["id"].Value.ToString();
                         form.tBNombre.Text = dgvTodas.Rows[indice].Cells["nombre"].Value.ToString();
                         form.tBMateria.Text = dgvTodas.Rows[indice].Cells["materia"].Value.ToString();
                         form.tBNumeroControl.Text = dgvTodas.Rows[indice].Cells["numeroControl"].Value.ToString();
-                        
+                        form.tBProyecto.Text = dgvTodas.Rows[indice].Cells["proyecto"].Value.ToString();
+                        form.cBModalidad.Text = categoria;
+
+
 
                         form.Show();
 

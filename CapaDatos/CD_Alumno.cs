@@ -21,7 +21,21 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    String query = "SELECT ALUMNO.nombre, ALUMNO.numeroControl, ALUMNO.telefono, ALUMNO_MAESTRO_MATERIA.materia, ALUMNO_MAESTRO_MATERIA.maestro, ALUMNO.email, ALUMNO_MAESTRO_MATERIA.fechaCreacion FROM ALUMNO_MAESTRO_MATERIA INNER JOIN MAESTRO ON ALUMNO_MAESTRO_MATERIA.maestro = MAESTRO.nombreCompleto INNER JOIN ALUMNO ON ALUMNO_MAESTRO_MATERIA.numeroControl = ALUMNO.numeroControl WHERE MAESTRO.nombreCompleto = '"+ maestro + "' AND (ALUMNO.numeroControl like '" + dato.ToString() + "' OR ALUMNO_MAESTRO_MATERIA.materia like '" + dato.ToString() + "' OR Alumno.telefono like '" + dato.ToString() + "' OR ALUMNO.email like '" + dato.ToString() + "' OR ALUMNO.nombre like '" + dato.ToString() + "' OR Alumno.telefono like '" + dato.ToString() + "' OR ALUMNO.email like '" + dato.ToString() + "' OR ALUMNO.nombre like '" + dato.ToString() + "' )";
+                    String query = "SELECT ALUMNO.nombre, ALUMNO.numeroControl, ALUMNO.telefono, " +
+    "ALUMNO_MAESTRO_MATERIA.materia, ALUMNO_MAESTRO_MATERIA.maestro, " +
+    "ALUMNO.email, ALUMNO_MAESTRO_MATERIA.fechaCreacion, ALUMNO_MAESTRO_MATERIA.id, " +
+    "CONTROL_PROYECTO_INTEGRADOR.categoria, CONTROL_PROYECTO_INTEGRADOR.nombre AS nombreProyecto " +
+    "FROM ALUMNO_MAESTRO_MATERIA " +
+    "INNER JOIN MAESTRO ON ALUMNO_MAESTRO_MATERIA.maestro = MAESTRO.nombreCompleto " +
+    "INNER JOIN ALUMNO ON ALUMNO_MAESTRO_MATERIA.numeroControl = ALUMNO.numeroControl " +
+    "LEFT JOIN CONTROL_PROYECTO_INTEGRADOR ON ALUMNO.numeroControl = CONTROL_PROYECTO_INTEGRADOR.numeroControl " +
+    "WHERE MAESTRO.nombreCompleto = '" + maestro + "' " +
+    "AND (ALUMNO.numeroControl LIKE '%" + dato + "%' OR " +
+    "ALUMNO_MAESTRO_MATERIA.materia LIKE '%" + dato + "%' OR " +
+    "ALUMNO.telefono LIKE '%" + dato + "%' OR " +
+    "ALUMNO.email LIKE '%" + dato + "%' OR " +
+    "ALUMNO.nombre LIKE '%" + dato + "%')";
+
                     //string query = "SELECT * FROM PROYECTO_PROPUESTA WHERE idProyectoPropuesta like '" + dato.ToString() + "' OR categoria like '" + dato.ToString() + "' OR estatus like '" + dato.ToString() + "'OR nombre like '" + dato.ToString() + "'OR responsable like '" + dato.ToString() + "'OR colaboradores like '" + dato.ToString() + "'or numAlumnos like '" + dato.ToString() + "'OR descripcion like '" + dato.ToString() + "'";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
@@ -101,7 +115,7 @@ namespace CapaDatos
                     {
                         SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_X_MAESTRO", oconexion);
                         cmd.Parameters.AddWithValue("@maestro", maestro);
-                      cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandType = CommandType.StoredProcedure;
                         oconexion.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -116,6 +130,8 @@ namespace CapaDatos
                                     telefono = reader["telefono"].ToString(),                                    
                                     email = reader["email"].ToString(),
                                     materia= reader["materia"].ToString(),
+                                    categoria = reader["categoria"].ToString(),
+                                    proyecto= reader["nombreProyecto"].ToString(),
                                     maestro= reader["maestro"].ToString(),
                                     fechaCreacion = reader["fechaCreacion"].ToString(),
                                 });

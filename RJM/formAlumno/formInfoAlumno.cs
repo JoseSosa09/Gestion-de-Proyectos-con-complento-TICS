@@ -114,9 +114,6 @@ namespace RJM.formsRJM
             
         }
 
-
-
-
         private void validarComboBox(object sender, CancelEventArgs e)
         {
             ComboBox tB = (ComboBox)sender;
@@ -181,6 +178,11 @@ namespace RJM.formsRJM
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnBorrarProyecto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

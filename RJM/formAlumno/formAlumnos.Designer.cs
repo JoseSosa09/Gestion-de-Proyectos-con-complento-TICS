@@ -45,9 +45,11 @@
             this.numeroControl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informacionAlumno = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodas)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
@@ -86,9 +88,11 @@
             this.numeroControl,
             this.telefono,
             this.materia,
+            this.proyecto,
             this.email,
             this.fechaCreacion,
-            this.informacionAlumno});
+            this.informacionAlumno,
+            this.eliminar});
             this.dgvTodas.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -253,6 +257,13 @@
             this.materia.Name = "materia";
             this.materia.ReadOnly = true;
             // 
+            // proyecto
+            // 
+            this.proyecto.HeaderText = "Proyecto";
+            this.proyecto.MinimumWidth = 6;
+            this.proyecto.Name = "proyecto";
+            this.proyecto.ReadOnly = true;
+            // 
             // email
             // 
             this.email.FillWeight = 103.0037F;
@@ -277,6 +288,15 @@
             this.informacionAlumno.Name = "informacionAlumno";
             this.informacionAlumno.ReadOnly = true;
             this.informacionAlumno.Width = 35;
+            // 
+            // eliminar
+            // 
+            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.eliminar.HeaderText = "";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
+            this.eliminar.ReadOnly = true;
+            this.eliminar.Width = 35;
             // 
             // formAlumnos
             // 
@@ -312,8 +332,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroControl;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn materia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proyecto;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
         private System.Windows.Forms.DataGridViewButtonColumn informacionAlumno;
+        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
     }
 }

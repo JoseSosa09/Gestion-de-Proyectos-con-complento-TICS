@@ -40,6 +40,10 @@ namespace RJM.formRJM
             cBModalidad.DisplayMember = "modalidad";
             cBModalidad.DataSource = integrador.CargarModalidad();
             cBModalidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cBCategoria.DisplayMember = "nombre";
+            cBCategoria.DataSource = integrador.CargarCategoria();
+            cBCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public void MostrarDatos()
@@ -49,7 +53,7 @@ namespace RJM.formRJM
 
             foreach (ControlProyectoIntegrador item in lista)
             {
-                dgvIntegrador.Rows.Add(new object[] { item.idTable, item.nombre, item.alumno, item.numeroControl, item.modalidad, "", "" });
+                dgvIntegrador.Rows.Add(new object[] { item.idTable, item.nombre, item.alumno, item.numeroControl, item.modalidad, item.categoria, "", "" });
             }
         }
 
@@ -110,7 +114,7 @@ namespace RJM.formRJM
                     {
                         if (vProyecto)
                         {
-                            controlIntegrador.Insertar(idProyectoPropuesta, nombre, alumnoNombre[0].Trim(), alumno.Trim(), modalidad, responsable);
+                            controlIntegrador.Insertar(idProyectoPropuesta, nombre, alumnoNombre[0].Trim(), alumno.Trim(), modalidad, responsable, cBCategoria.Text);
                             MessageBox.Show("Se ha asignado de manera correcta", "Asignación Completa!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -141,7 +145,7 @@ namespace RJM.formRJM
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -156,7 +160,7 @@ namespace RJM.formRJM
                 e.Handled = true;
             }
 
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 7)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);

@@ -379,7 +379,6 @@
             this.dgvTodas.ShowEditingIcon = false;
             this.dgvTodas.Size = new System.Drawing.Size(1285, 321);
             this.dgvTodas.TabIndex = 21;
-            this.dgvTodas.Visible = false;
             this.dgvTodas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             this.dgvTodas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgv_CellPainting);
             // 
@@ -528,6 +527,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formPropuestas";
             this.Text = "formPropuestas";
+            this.Load += new System.EventHandler(this.formPropuestas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
