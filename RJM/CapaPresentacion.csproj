@@ -96,11 +96,23 @@
     <Compile Include="formOpciones\formHome.Designer.cs">
       <DependentUpon>formHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="formOpciones\formProyecto.cs">
+    <Compile Include="formProyecto\formAlumnosArchivos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formOpciones\formProyecto.Designer.cs">
-      <DependentUpon>formProyecto.cs</DependentUpon>
+    <Compile Include="formProyecto\formAlumnosArchivos.Designer.cs">
+      <DependentUpon>formAlumnosArchivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formProyecto\formArchivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProyecto\formArchivos.Designer.cs">
+      <DependentUpon>formArchivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formProyecto\formProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProyecto\formProyectos.Designer.cs">
+      <DependentUpon>formProyectos.cs</DependentUpon>
     </Compile>
     <Compile Include="formsRJM\Asignar Proyecto\formEditar.cs">
       <SubType>Form</SubType>
@@ -206,8 +218,14 @@
     <EmbeddedResource Include="formOpciones\formHome.resx">
       <DependentUpon>formHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formOpciones\formProyecto.resx">
-      <DependentUpon>formProyecto.cs</DependentUpon>
+    <EmbeddedResource Include="formProyecto\formAlumnosArchivos.resx">
+      <DependentUpon>formAlumnosArchivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formProyecto\formArchivos.resx">
+      <DependentUpon>formArchivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formProyecto\formProyectos.resx">
+      <DependentUpon>formProyectos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formsRJM\Asignar Proyecto\formEditar.resx">
       <DependentUpon>formEditar.cs</DependentUpon>
@@ -364,8 +382,42 @@
     <None Include="Resources\tec.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\DESCA.png" />
+    <Content Include="Resources\Image1.png" />
     <Content Include="tec.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="formProyectosAlumnos\" />
+    <Folder Include="formProyecto\formAlumno-Proyecto\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

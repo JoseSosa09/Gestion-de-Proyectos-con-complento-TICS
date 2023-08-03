@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_Files.cs" />
     <Compile Include="CD_Alumno.cs" />
     <Compile Include="CD_AlumnoMateriaMaestro.cs" />
     <Compile Include="CD_ControlProyectoIntegrador.cs" />

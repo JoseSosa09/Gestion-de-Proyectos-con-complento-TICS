@@ -52,7 +52,6 @@
             this.numeroControl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editarButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.borrarButton = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIntegrador)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +90,6 @@
             this.numeroControl,
             this.modalidad,
             this.categoria,
-            this.editarButton,
             this.borrarButton});
             this.dgvIntegrador.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -116,6 +114,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvIntegrador.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvIntegrador.RowHeadersVisible = false;
             this.dgvIntegrador.RowHeadersWidth = 51;
             this.dgvIntegrador.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
@@ -338,15 +337,6 @@
             this.categoria.Name = "categoria";
             this.categoria.ReadOnly = true;
             // 
-            // editarButton
-            // 
-            this.editarButton.FillWeight = 12F;
-            this.editarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editarButton.HeaderText = "";
-            this.editarButton.MinimumWidth = 6;
-            this.editarButton.Name = "editarButton";
-            this.editarButton.ReadOnly = true;
-            // 
             // borrarButton
             // 
             this.borrarButton.FillWeight = 12F;
@@ -404,7 +394,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroControl;
         private System.Windows.Forms.DataGridViewTextBoxColumn modalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
-        private System.Windows.Forms.DataGridViewButtonColumn editarButton;
         private System.Windows.Forms.DataGridViewButtonColumn borrarButton;
     }
 }

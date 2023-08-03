@@ -149,6 +149,28 @@ namespace CapaDatos
                 return lista;
             }
 
+        public void Delete(String numeroControl)
+        {            
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("EliminarAlumno", oconexion);
+                    cmd.Parameters.AddWithValue("@numeroControlEliminar", numeroControl);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }            
+        }
+
         public void RegistrarAlumno(String nombre, String apellido, String telefono, String email, String numeroControl, String password)
             {
                 String nombreCompleto = nombre + " " + apellido;

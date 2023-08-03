@@ -32,7 +32,15 @@ namespace RJM
             InitializeComponent();
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
-            abrirFormulario(RJM, new FormRJM());
+            if(usuarioMaestro != null )
+            {
+                abrirFormulario(PROYECTO, new formProyectos());
+            }
+            else
+            {
+
+            }
+            
 
         }
 
@@ -147,7 +155,7 @@ namespace RJM
         private void btnProyecto_Click(object sender, EventArgs e)
         {
 
-            abrirFormulario((Button)sender, new formProyecto());
+            abrirFormulario((Button)sender, new formProyectos());
 
         }
 

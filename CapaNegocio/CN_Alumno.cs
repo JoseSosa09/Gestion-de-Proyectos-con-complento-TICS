@@ -17,6 +17,11 @@ namespace CapaNegocio
             return objcd_alumno.Listar();
         }
 
+        public void Delete(String numeroControl)
+        {
+            objcd_alumno.Delete(numeroControl);
+        }
+
         public List<Alumno> Listar_X_Maestro(String maestro)
         {
             return objcd_alumno.Listar_X_Maestro(maestro);

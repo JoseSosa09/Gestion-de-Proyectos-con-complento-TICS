@@ -89,10 +89,51 @@ namespace RJM
                 e.Graphics.DrawImage(Properties.Resources.reload, new Rectangle(x2, y2, w2, h2));
                 e.Handled = true;
             }
+            if (e.ColumnIndex == 9)
+            {
+
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = Properties.Resources.x_button.Width;
+                var h = Properties.Resources.x_button.Height;
+
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.x_button, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
         }
 
         private void dgvTodas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            CN_Alumno alumno = new CN_Alumno();
+
+            String numeroControl = "";
+            if (dgvTodas.Columns[e.ColumnIndex].Name == "eliminar")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    numeroControl = dgvTodas.Rows[indice].Cells["numeroControl"].Value?.ToString();
+                    if (numeroControl != null)
+                    {
+                        if (MessageBox.Show("¿Estas seguro que deseas eliminar a este alumno del Sistema?", "Warning",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            alumno.Delete(numeroControl);
+                            dgvTodas.Rows.RemoveAt(e.RowIndex);
+                            MessageBox.Show("Se ha eliminado correctamente actualice la tabla para ver los resultados");
+                        }
+                            
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }           
+
             if (dgvTodas.Columns[e.ColumnIndex].Name == "informacionAlumno")
             {
                 formInfoAlumno form = new formInfoAlumno();
@@ -100,7 +141,7 @@ namespace RJM
                 if (indice >= 0)
                 {
                     String id = dgvTodas.Rows[indice].Cells["id"].Value?.ToString();                    
-                    String numeroControl = dgvTodas.Rows[indice].Cells["numeroControl"].Value.ToString();
+                    numeroControl = dgvTodas.Rows[indice].Cells["numeroControl"].Value.ToString();
                     if (id != null)
                     {
                         String categoria = "";
