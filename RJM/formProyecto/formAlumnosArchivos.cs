@@ -101,9 +101,9 @@ namespace RJM.formProyecto
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                var w = Properties.Resources.x_button.Width;
-                var h = Properties.Resources.x_button.Height;
+                
+                var w = RJM.Properties.Resources.descargar.Width;
+                var h = RJM.Properties.Resources.descargar.Height;
 
                 var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;

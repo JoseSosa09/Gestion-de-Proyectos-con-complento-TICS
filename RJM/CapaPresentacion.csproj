@@ -382,7 +382,8 @@
     <None Include="Resources\tec.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\descargar.png" />
+    <Content Include="Resources\DESCA.png" />
+    <Content Include="Resources\Image1.png" />
     <Content Include="tec.ico" />
   </ItemGroup>
   <ItemGroup>
