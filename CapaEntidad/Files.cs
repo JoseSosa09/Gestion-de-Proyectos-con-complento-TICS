@@ -14,6 +14,7 @@ namespace CapaEntidad
         public string programa { get; set; }
         public string alumno { get; set; }
         public string numeroControl { get; set; }
+        public string maestro { get; set; }
 
     }
 }

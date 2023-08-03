@@ -96,6 +96,24 @@
     <Compile Include="formOpciones\formHome.Designer.cs">
       <DependentUpon>formHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formBajarArchivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formBajarArchivos.Designer.cs">
+      <DependentUpon>formBajarArchivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formProyectosAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formProyectosAlumnos.Designer.cs">
+      <DependentUpon>formProyectosAlumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formSubirArchivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formProyecto\formAlumno-Proyecto\formSubirArchivos.Designer.cs">
+      <DependentUpon>formSubirArchivos.cs</DependentUpon>
+    </Compile>
     <Compile Include="formProyecto\formAlumnosArchivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +235,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formOpciones\formHome.resx">
       <DependentUpon>formHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formProyecto\formAlumno-Proyecto\formBajarArchivos.resx">
+      <DependentUpon>formBajarArchivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formProyecto\formAlumno-Proyecto\formProyectosAlumnos.resx">
+      <DependentUpon>formProyectosAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formProyecto\formAlumno-Proyecto\formSubirArchivos.resx">
+      <DependentUpon>formSubirArchivos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formProyecto\formAlumnosArchivos.resx">
       <DependentUpon>formAlumnosArchivos.cs</DependentUpon>
@@ -417,7 +444,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="formProyectosAlumnos\" />
-    <Folder Include="formProyecto\formAlumno-Proyecto\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

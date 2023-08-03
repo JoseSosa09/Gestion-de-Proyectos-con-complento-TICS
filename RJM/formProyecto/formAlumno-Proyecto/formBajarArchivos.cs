@@ -11,63 +11,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RJM.formProyecto
+namespace RJM.formProyecto.formAlumno_Proyecto
 {
-    public partial class formAlumnosArchivos : Form
+    public partial class formBajarArchivos : Form
     {
         CN_Files objFiles = new CN_Files();
+        Alumno alumno;
 
-        public formAlumnosArchivos()
+        public formBajarArchivos(Alumno alumno)
         {
             InitializeComponent();
+            this.alumno = alumno;
         }
 
-        private void formAlumnosArchivos_Load(object sender, EventArgs e)
+        private void formBajarArchivos_Load(object sender, EventArgs e)
         {
             MostrarDatos();
         }
 
         public void MostrarDatos()
-        {            
-            CN_Files files = new CN_Files();
-            cBAlumno.DisplayMember = "nombre";
-            cBAlumno.DataSource = files.CargarAlumno();
-            cBAlumno.DropDownStyle = ComboBoxStyle.DropDownList;            
-        }
-
-        public void MostrarBusqueda(string dato)
         {
             dgvFiles.Rows.Clear();
             List<Files> list = new List<Files>();
-            list = objFiles.BuscarPalabra(dato);
+            list = objFiles.FilesAlumnos(alumno.numeroControl.ToString());
 
             foreach (Files item in list)
             {
-                dgvFiles.Rows.Add(new object[] { item.ID, item.NombreArchivo, item.ContenidoArchivo, item.programa, item.alumno });
+                dgvFiles.Rows.Add(new object[] { item.ID, item.NombreArchivo, "", item.programa, ""});
             }
         }
-        private void textBoxBuscar_KeyUp(object sender, KeyEventArgs e)
-        {
-            string dato = "%" + textBoxBuscar.Text + "%";
-            MostrarBusqueda(dato);
-        }
-
-        private void cBAlumno_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dgvFiles.Rows.Clear();
-            List<Files> list = new List<Files>();
-
-            string[] alumnoNombre = cBAlumno.Text.Split('-');
-            string numeroControl = alumnoNombre[1].Substring(1, alumnoNombre[1].Length - 1);
-
-            list = objFiles.MostrarAlumnoFilesSelectIndexChanged(numeroControl);
-
-            foreach (Files item in list)
-            {
-                dgvFiles.Rows.Add(new object[] { item.ID, item.NombreArchivo, item.ContenidoArchivo, item.programa, item.alumno });
-            }
-        }
-
 
         private void dgvFiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -76,6 +48,9 @@ namespace RJM.formProyecto
             {
                 // Obtener el nombre del archivo seleccionado
                 string fileName = dgvFiles.Rows[e.RowIndex].Cells["archivo"].Value.ToString();
+
+                // Obtener la ruta completa del archivo seleccionado (puedes tener una variable con la ruta base donde se guardan los archivos)
+                //string filePath = Path.Combine("C:\\Users\\Asus\\Downloads", fileName);
 
                 // Obtener la ruta completa de la carpeta de descargas del usuario actual
                 string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -111,17 +86,18 @@ namespace RJM.formProyecto
                     MessageBox.Show("El archivo seleccionado no existe.", "Archivo no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+
         }
 
         private void dgvFiles_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 4)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                
+
                 var w = Properties.Resources.apuntar_hacia_abajo.Width;
                 var h = Properties.Resources.apuntar_hacia_abajo.Height;
 
@@ -131,8 +107,7 @@ namespace RJM.formProyecto
                 e.Graphics.DrawImage(Properties.Resources.apuntar_hacia_abajo, new Rectangle(x, y, w, h));
                 e.Handled = true;
             }
-        }
 
-        
+        }
     }
 }

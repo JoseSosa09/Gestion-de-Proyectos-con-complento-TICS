@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CapaNegocio;
 using CapaEntidad;
+using RJM.formProyecto.formAlumno_Proyecto;
 
 namespace RJM
 {
@@ -38,9 +39,8 @@ namespace RJM
             }
             else
             {
-
+                abrirFormulario(PROYECTO, new formProyectosAlumnos(usuarioActual));
             }
-            
 
         }
 
@@ -111,7 +111,11 @@ namespace RJM
 
         }
 
-        //Private methods
+        private void ALUMNOS_Click(object sender, EventArgs e)
+        {
+            abrirFormulario((Button)sender, new formAlumnos());
+        }
+
         private void AdjustForm()
         {
             switch (this.WindowState)
@@ -155,8 +159,14 @@ namespace RJM
         private void btnProyecto_Click(object sender, EventArgs e)
         {
 
-            abrirFormulario((Button)sender, new formProyectos());
-
+            if (usuarioMaestro != null)
+            {
+                abrirFormulario((Button)sender, new formProyectos());
+            }
+            else
+            {
+                abrirFormulario((Button)sender, new formProyectosAlumnos(usuarioActual));
+            }
         }
 
         private void SALIDA_Click(object sender, EventArgs e)
@@ -300,9 +310,6 @@ namespace RJM
 
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        private void ALUMNOS_Click(object sender, EventArgs e)
-        {
-            abrirFormulario((Button)sender, new formAlumnos());
-        }
+
     }
 }

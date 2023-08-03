@@ -91,8 +91,11 @@ namespace RJM.formProyecto
                 // Obtener el nombre del archivo seleccionado
                 string fileName = dgvFiles.Rows[e.RowIndex].Cells["archivo"].Value.ToString();
 
-                // Obtener la ruta completa del archivo seleccionado (puedes tener una variable con la ruta base donde se guardan los archivos)
-                string filePath = Path.Combine("C:\\Users\\Asus\\Downloads", fileName);
+                // Obtener la ruta completa de la carpeta de descargas del usuario actual
+                string downloadsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                // Combinar la ruta de descargas con el nombre del archivo seleccionado
+                string filePath = Path.Combine(downloadsFolder, fileName);
 
                 // Verificar si el archivo existe antes de intentar descargarlo
                 if (File.Exists(filePath))

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LOGIN));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconoCerrar = new FontAwesome.Sharp.IconButton();
+            this.icnonoMinimizar = new FontAwesome.Sharp.IconButton();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.linkRegistrarme = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -41,8 +43,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.icnonoMinimizar = new FontAwesome.Sharp.IconButton();
-            this.iconoCerrar = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,6 +67,44 @@
             this.panel1.Size = new System.Drawing.Size(466, 373);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // iconoCerrar
+            // 
+            this.iconoCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconoCerrar.FlatAppearance.BorderSize = 0;
+            this.iconoCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.iconoCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconoCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconoCerrar.IconColor = System.Drawing.Color.White;
+            this.iconoCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconoCerrar.IconSize = 32;
+            this.iconoCerrar.Location = new System.Drawing.Point(434, 3);
+            this.iconoCerrar.Margin = new System.Windows.Forms.Padding(0);
+            this.iconoCerrar.Name = "iconoCerrar";
+            this.iconoCerrar.Size = new System.Drawing.Size(26, 26);
+            this.iconoCerrar.TabIndex = 28;
+            this.iconoCerrar.UseVisualStyleBackColor = true;
+            this.iconoCerrar.Click += new System.EventHandler(this.loginCerrar_Click);
+            // 
+            // icnonoMinimizar
+            // 
+            this.icnonoMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.icnonoMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.icnonoMinimizar.FlatAppearance.BorderSize = 0;
+            this.icnonoMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.icnonoMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.icnonoMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.icnonoMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            this.icnonoMinimizar.IconColor = System.Drawing.Color.White;
+            this.icnonoMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.icnonoMinimizar.IconSize = 32;
+            this.icnonoMinimizar.Location = new System.Drawing.Point(405, 3);
+            this.icnonoMinimizar.Name = "icnonoMinimizar";
+            this.icnonoMinimizar.Size = new System.Drawing.Size(26, 26);
+            this.icnonoMinimizar.TabIndex = 27;
+            this.icnonoMinimizar.UseVisualStyleBackColor = false;
+            this.icnonoMinimizar.Click += new System.EventHandler(this.loginMinimizar_Click);
             // 
             // textPassword
             // 
@@ -161,6 +199,7 @@
             this.textUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textUser.ForeColor = System.Drawing.Color.DimGray;
             this.textUser.Location = new System.Drawing.Point(98, 106);
+            this.textUser.MaxLength = 15;
             this.textUser.Name = "textUser";
             this.textUser.Size = new System.Drawing.Size(289, 25);
             this.textUser.TabIndex = 1;
@@ -215,44 +254,6 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            // 
-            // icnonoMinimizar
-            // 
-            this.icnonoMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.icnonoMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.icnonoMinimizar.FlatAppearance.BorderSize = 0;
-            this.icnonoMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.icnonoMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.icnonoMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icnonoMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.icnonoMinimizar.IconColor = System.Drawing.Color.White;
-            this.icnonoMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.icnonoMinimizar.IconSize = 32;
-            this.icnonoMinimizar.Location = new System.Drawing.Point(405, 3);
-            this.icnonoMinimizar.Name = "icnonoMinimizar";
-            this.icnonoMinimizar.Size = new System.Drawing.Size(26, 26);
-            this.icnonoMinimizar.TabIndex = 27;
-            this.icnonoMinimizar.UseVisualStyleBackColor = false;
-            this.icnonoMinimizar.Click += new System.EventHandler(this.loginMinimizar_Click);
-            // 
-            // iconoCerrar
-            // 
-            this.iconoCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconoCerrar.FlatAppearance.BorderSize = 0;
-            this.iconoCerrar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.iconoCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.iconoCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconoCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.iconoCerrar.IconColor = System.Drawing.Color.White;
-            this.iconoCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconoCerrar.IconSize = 32;
-            this.iconoCerrar.Location = new System.Drawing.Point(434, 3);
-            this.iconoCerrar.Margin = new System.Windows.Forms.Padding(0);
-            this.iconoCerrar.Name = "iconoCerrar";
-            this.iconoCerrar.Size = new System.Drawing.Size(26, 26);
-            this.iconoCerrar.TabIndex = 28;
-            this.iconoCerrar.UseVisualStyleBackColor = true;
-            this.iconoCerrar.Click += new System.EventHandler(this.loginCerrar_Click);
             // 
             // LOGIN
             // 
