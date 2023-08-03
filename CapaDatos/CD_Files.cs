@@ -130,6 +130,52 @@ namespace CapaDatos
             return list;
         }
 
+        public List<Files> MostrarTodo(String buscar)
+        {
+            List<Files> list = new List<Files>();
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_ARCHIVO_WORD_NUMCONTROL", oconexion);
+                    cmd.Parameters.AddWithValue("@numeroControl", buscar);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Cargar los datos en la lista de objetos "Files"
+                        while (reader.Read())
+                        {
+                            int fileId = reader.GetInt32(0);
+                            string fileName = reader.GetString(1);
+                            string programa = (string)reader["Programa"];
+                            string alumno = (string)reader["Alumno"];
+                            byte[] fileContent = (byte[])reader["ContenidoArchivo"];
+
+
+                            // Crear el objeto "Files" y agregarlo a la lista
+                            Files archivo = new Files
+                            {
+                                ID = fileId,
+                                NombreArchivo = fileName,
+                                ContenidoArchivo = fileContent,
+                                programa = programa,
+                                alumno = alumno,
+                            };
+                            list.Add(archivo);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return list;
+        }
 
 
         public List<Files> MostrarAlumnos()

@@ -74,6 +74,7 @@
             this.btnArchivos.TabIndex = 2;
             this.btnArchivos.Text = "Archivos";
             this.btnArchivos.UseVisualStyleBackColor = false;
+            this.btnArchivos.Click += new System.EventHandler(this.btnArchivos_Click);
             // 
             // btnAlumnos
             // 
@@ -90,6 +91,7 @@
             this.btnAlumnos.TabIndex = 1;
             this.btnAlumnos.Text = "Alumnos";
             this.btnAlumnos.UseVisualStyleBackColor = false;
+            this.btnAlumnos.Click += new System.EventHandler(this.btnAlumnos_Click);
             // 
             // contenedor
             // 

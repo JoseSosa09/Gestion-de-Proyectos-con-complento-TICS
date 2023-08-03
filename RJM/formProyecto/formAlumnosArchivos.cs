@@ -52,6 +52,23 @@ namespace RJM.formProyecto
             MostrarBusqueda(dato);
         }
 
+        private void cBAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvFiles.Rows.Clear();
+            List<Files> list = new List<Files>();
+
+            string[] alumnoNombre = cBAlumno.Text.Split('-');
+            string numeroControl = alumnoNombre[1].Substring(1, alumnoNombre[1].Length - 1);
+
+            list = objFiles.MostrarTodo(numeroControl);
+
+            foreach (Files item in list)
+            {
+                dgvFiles.Rows.Add(new object[] { item.ID, item.NombreArchivo, item.ContenidoArchivo, item.programa, item.alumno });
+            }
+        }
+
+
         private void dgvFiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar si el clic se realizó en la columna de descarga y no en otra parte del DataGridView
@@ -102,20 +119,17 @@ namespace RJM.formProyecto
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 
-                var w = RJM.Properties.Resources.descargar.Width;
-                var h = RJM.Properties.Resources.descargar.Height;
+                var w = Properties.Resources.apuntar_hacia_abajo.Width;
+                var h = Properties.Resources.apuntar_hacia_abajo.Height;
 
                 var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.x_button, new Rectangle(x, y, w, h));
+                e.Graphics.DrawImage(Properties.Resources.apuntar_hacia_abajo, new Rectangle(x, y, w, h));
                 e.Handled = true;
             }
         }
 
-        private void cBAlumno_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

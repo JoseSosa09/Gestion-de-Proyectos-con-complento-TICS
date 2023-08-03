@@ -29,6 +29,11 @@ namespace CapaNegocio
             return obj.AlumnosFiles(query);
         }
 
+        public List<Files> MostrarTodo(String alumno)
+        {
+            return obj.MostrarTodo(alumno);
+        }
+
         public List<Files> MostrarAlumnos()
         {
             return obj.MostrarAlumnos();

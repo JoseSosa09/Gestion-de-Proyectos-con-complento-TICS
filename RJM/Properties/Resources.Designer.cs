@@ -79,12 +79,12 @@ namespace RJM.Properties {
             }
         }
 
-        internal static System.Drawing.Bitmap descargar
+        internal static System.Drawing.Bitmap desca
 
         {
             get
             {
-                object obj = ResourceManager.GetObject("descargar", resourceCulture);
+                object obj = ResourceManager.GetObject("DESCA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
