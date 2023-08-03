@@ -144,23 +144,8 @@ namespace RJM.formRJM
         {
             if (e.RowIndex < 0)
                 return;
-
+            
             if (e.ColumnIndex == 6)
-            {
-
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                var w2 = Properties.Resources.reload.Width;
-                var h2 = Properties.Resources.reload.Height;
-
-                var x2 = e.CellBounds.Left + (e.CellBounds.Width - w2) / 2;
-                var y2 = e.CellBounds.Top + (e.CellBounds.Height - h2) / 2;
-
-                e.Graphics.DrawImage(Properties.Resources.reload, new Rectangle(x2, y2, w2, h2));
-                e.Handled = true;
-            }
-
-            if (e.ColumnIndex == 7)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -203,30 +188,33 @@ namespace RJM.formRJM
                 }
             }
 
-            if (dgvIntegrador.Columns[e.ColumnIndex].Name == "editarButton")
-            {
-                formEditar form = new formEditar();
-                int indice = e.RowIndex;
+            //if (dgvIntegrador.Columns[e.ColumnIndex].Name == "editarButton")
+            //{
+            //    formEditar form = new formEditar();
+            //    int indice = e.RowIndex;
 
-                if (indice >= 0)
-                {
-                    id = dgvIntegrador.Rows[indice].Cells["idTable"].Value?.ToString();
+            //    if (indice >= 0)
+            //    {
+            //        id = dgvIntegrador.Rows[indice].Cells["idTable"].Value?.ToString();
+            //        String alumno = dgvIntegrador.Rows[indice].Cells["alumno"].Value.ToString();
+            //        String modalidad = dgvIntegrador.Rows[indice].Cells["modalidad"].Value.ToString();
+            //        String nombre = dgvIntegrador.Rows[indice].Cells["nombre"].Value.ToString();
 
-                    if (id != null)
-                    {                                                
-                        form.tBId.Text = dgvIntegrador.Rows[indice].Cells["idTable"].Value.ToString();
-                        form.cBAlumno.Text = dgvIntegrador.Rows[indice].Cells["alumno"].Value.ToString();
-                        form.cBModalidad.Text = dgvIntegrador.Rows[indice].Cells["modalidad"].Value.ToString();
-                        form.cBNombre.Text = dgvIntegrador.Rows[indice].Cells["nombre"].Value.ToString();
+            //        if (id != null)
+            //        {
+            //            form.tBId.Text = id;
+            //            form.cBAlumno.Text = alumno;
+            //            form.cBModalidad.Text = modalidad;
+            //            form.cBNombre.Text = nombre;
 
-                        form.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            //            form.Show();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("No ha seleccionado ninguna propuesta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        }
+            //    }
+            //}
             MostrarDatos();
         }
 

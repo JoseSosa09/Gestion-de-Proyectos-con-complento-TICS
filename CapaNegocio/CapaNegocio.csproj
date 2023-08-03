@@ -45,6 +45,7 @@
     <Compile Include="CN_ALUMNO_MATERIA_MAESTRO.cs" />
     <Compile Include="CN_ControlProyectoIntegrador.cs" />
     <Compile Include="CN_Maestro.cs" />
+    <Compile Include="CN_Files.cs" />
     <Compile Include="CN_Permiso.cs" />
     <Compile Include="CN_ProyectoIntegrador.cs" />
     <Compile Include="CN_ProyectoPropuesta.cs" />

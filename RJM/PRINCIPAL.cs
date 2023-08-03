@@ -147,7 +147,7 @@ namespace RJM
         private void btnProyecto_Click(object sender, EventArgs e)
         {
 
-            abrirFormulario((Button)sender, new formProyecto());
+            abrirFormulario((Button)sender, new formProyectos());
 
         }
 
