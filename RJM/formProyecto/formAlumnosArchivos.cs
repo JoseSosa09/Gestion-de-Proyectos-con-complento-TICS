@@ -16,10 +16,12 @@ namespace RJM.formProyecto
     public partial class formAlumnosArchivos : Form
     {
         CN_Files objFiles = new CN_Files();
+        public Maestro maestro;
 
-        public formAlumnosArchivos()
+        public formAlumnosArchivos(Maestro maestro)
         {
             InitializeComponent();
+            this.maestro = maestro; 
         }
 
         private void formAlumnosArchivos_Load(object sender, EventArgs e)
@@ -59,8 +61,9 @@ namespace RJM.formProyecto
 
             string[] alumnoNombre = cBAlumno.Text.Split('-');
             string numeroControl = alumnoNombre[1].Substring(1, alumnoNombre[1].Length - 1);
+            string maestroNombre = maestro.nombreCompleto.ToString();
 
-            list = objFiles.MostrarAlumnoFilesSelectIndexChanged(numeroControl);
+            list = objFiles.MostrarAlumnoFilesSelectIndexChanged(numeroControl, maestroNombre);
 
             foreach (Files item in list)
             {

@@ -18,12 +18,14 @@ namespace RJM
         private static Button MenuActivo = null;
         private static Form FormularioActivo = null;
         private static bool Help = false;
+        public Maestro maestro;
 
-        public formProyectos()
+        public formProyectos(Maestro maestro)
         {
             InitializeComponent();
             SidePanel.Width = btnAlumnos.Width;
             SidePanel.Left = btnAlumnos.Left;
+            this.maestro = maestro; 
         }
 
         public void abrirFormulario(Button menu, Form form)
@@ -78,21 +80,21 @@ namespace RJM
 
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
-            abrirFormulario((Button)sender, new formAlumnosArchivos());
+            abrirFormulario((Button)sender, new formAlumnosArchivos(maestro));
             SidePanel.Width = btnAlumnos.Width;
             SidePanel.Left = btnAlumnos.Left;
         }
 
         private void btnArchivos_Click(object sender, EventArgs e)
         {
-            abrirFormulario((Button)sender, new RJM.formProyecto.formArchivos());
+            abrirFormulario((Button)sender, new RJM.formProyecto.formArchivos(maestro));
             SidePanel.Width = btnArchivos.Width;
             SidePanel.Left = btnArchivos.Left;
         }
 
         private void formProyecto_Load(object sender, EventArgs e)
         {
-            inicioFormulario(new RJM.formProyecto.formAlumnosArchivos());
+            inicioFormulario(new RJM.formProyecto.formAlumnosArchivos(maestro));
         }
     }
 }

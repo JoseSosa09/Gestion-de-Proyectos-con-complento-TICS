@@ -174,6 +174,44 @@ namespace RJM
                     }
                 }
             }
+            
+            if (dgvTodas.Columns[e.ColumnIndex].Name == "imprimir")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    numeroControl = dgvTodas.Rows[indice].Cells["numeroControl"].Value?.ToString();
+                    if (numeroControl != null)
+                    {
+                        SaveFileDialog savefile = new SaveFileDialog();
+                        savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+                        List<Encuesta> encuestas = new CN_Files().ObtenerEncuestas(numeroControl);    
+
+                        foreach(Encuesta item in encuestas)
+                        {
+                            //string PaginaHTML_Texto = Properties.Resources.PlantillaEncuesta.ToString();
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DEPARTAMENTO", tBDepartamento.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@R_DEPARTAMENTO", tBResponsableDepartamento.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@R_PROGRAMA", tbResponsable.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCENTE", tBPuesto.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NOMBRE", cBNombre.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CANTIDAD", tBNumero.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A1", tBActividad1.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A2", tBActividad2.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A3", tBActividad3.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A4", tBActividad4.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A5", tBActividad5.Text);
+                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha podido imprimir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
         }
     }
 }

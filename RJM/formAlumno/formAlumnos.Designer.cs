@@ -50,6 +50,7 @@
             this.fechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informacionAlumno = new System.Windows.Forms.DataGridViewButtonColumn();
             this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.imprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodas)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
@@ -92,7 +93,8 @@
             this.email,
             this.fechaCreacion,
             this.informacionAlumno,
-            this.eliminar});
+            this.eliminar,
+            this.imprimir});
             this.dgvTodas.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -298,6 +300,15 @@
             this.eliminar.ReadOnly = true;
             this.eliminar.Width = 35;
             // 
+            // imprimir
+            // 
+            this.imprimir.HeaderText = "";
+            this.imprimir.MinimumWidth = 6;
+            this.imprimir.Name = "imprimir";
+            this.imprimir.ReadOnly = true;
+            this.imprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.imprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // formAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -337,5 +348,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
         private System.Windows.Forms.DataGridViewButtonColumn informacionAlumno;
         private System.Windows.Forms.DataGridViewButtonColumn eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn imprimir;
     }
 }

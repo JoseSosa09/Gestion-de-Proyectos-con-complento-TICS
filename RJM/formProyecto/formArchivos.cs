@@ -14,10 +14,12 @@ namespace RJM.formProyecto
     public partial class formArchivos : Form
     {
         CN_Files objFiles = new CN_Files();
+        Maestro maestro;
 
-        public formArchivos()
+        public formArchivos(Maestro maestro)
         {
             InitializeComponent();
+            this.maestro = maestro; 
         }
 
         private void formArchivos_Load(object sender, EventArgs e)
@@ -41,10 +43,10 @@ namespace RJM.formProyecto
         public void MostrarDatos()
         {
             dgvFiles.Rows.Clear();
-
+            
             // Actualizar la vista en el DataGridView
             List<Files> list = new List<Files>();
-            list = objFiles.LoadFilesFromDatabase();
+            list = objFiles.LoadFilesFromDatabase(maestro.nombreCompleto.ToString());
 
             foreach (Files item in list)
             {
@@ -76,7 +78,7 @@ namespace RJM.formProyecto
                 // Guardar los archivos en la base de datos y cargar los datos en el DataGridView
                 foreach (string fileName in fileNames)
                 {
-                    objFiles.SaveFileToDatabase(fileName, programa, alumno, numeroControl);
+                    objFiles.SaveFileToDatabase(fileName, programa, alumno, numeroControl, maestro.nombreCompleto.ToString());
                 }
                 dgvFiles.Rows.Clear();
                 MostrarDatos();

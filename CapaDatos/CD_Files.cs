@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class CD_Files
     {
-        public void SaveFileToDatabase(string filePath, String programa, string alumno, string numeroControl)
+        public void SaveFileToDatabase(string filePath, String programa, string alumno, string numeroControl, string maestro)
         {
             byte[] fileBytes = File.ReadAllBytes(filePath);
             string fileName = Path.GetFileName(filePath);
@@ -22,7 +22,7 @@ namespace CapaDatos
                 oconexion.Open();
 
                 // Insertar el archivo en la tabla de la base de datos
-                string query = "INSERT INTO ArchivosWord (NombreArchivo, ContenidoArchivo, Programa, Alumno, NumeroControl) VALUES (@NombreArchivo, @ContenidoArchivo, @Programa, @Alumno, @NumeroControl)";
+                string query = "INSERT INTO ArchivosWord (NombreArchivo, ContenidoArchivo, Programa, Alumno, NumeroControl, Maestro) VALUES (@NombreArchivo, @ContenidoArchivo, @Programa, @Alumno, @NumeroControl, @Maestro)";
                 using (SqlCommand command = new SqlCommand(query, oconexion))
                 {
                     command.Parameters.AddWithValue("@NombreArchivo", fileName);
@@ -30,6 +30,7 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("@Programa", programa);
                     command.Parameters.AddWithValue("@Alumno", alumno);
                     command.Parameters.AddWithValue("@NumeroControl", numeroControl);
+                    command.Parameters.AddWithValue("@Maestro", maestro);
                     command.ExecuteNonQuery();
                 }
             }
@@ -60,7 +61,7 @@ namespace CapaDatos
             }
         }
 
-        public List<Files> LoadFilesFromDatabase()
+        public List<Files> LoadFilesFromDatabase(String maestro)
         {
             List<Files> list = new List<Files>();
 
@@ -71,7 +72,7 @@ namespace CapaDatos
                 try
                 {
                     // Obtener los datos de los archivos de la base de datos
-                    string query = "SELECT * FROM ArchivosWord";
+                    string query = "SELECT * FROM ArchivosWord where Maestro = '"+maestro+"'";
                     using (SqlCommand command = new SqlCommand(query, oconexion))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -164,8 +165,8 @@ namespace CapaDatos
             {
                 try
                 {
-
-                    SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_ARCHIVO_WORD_NUMCONTROL", oconexion);
+                    
+                    SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_ARCHIVO_WORD_NUMCONT", oconexion);
                     cmd.Parameters.AddWithValue("@numeroControl", numeroControl);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
@@ -251,7 +252,7 @@ namespace CapaDatos
             return list;
         }
 
-        public List<Files> MostrarAlumnoFilesSelectIndexChanged(String buscar)
+        public List<Files> MostrarAlumnoFilesSelectIndexChanged(String buscar, String maestro)
         {
             List<Files> list = new List<Files>();
 
@@ -262,6 +263,7 @@ namespace CapaDatos
 
                     SqlCommand cmd = new SqlCommand("SP_SELECT_ALUMNOS_ARCHIVO_WORD_NUMCONTROL", oconexion);
                     cmd.Parameters.AddWithValue("@numeroControl", buscar);
+                    cmd.Parameters.AddWithValue("@maestro", maestro);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
 
@@ -467,5 +469,134 @@ namespace CapaDatos
             }
             return dt;
         }
+
+        public void GuardarEncuesta(string nombrealumno, string numeroControl, string maestro, string java, string python, string cmasmas, string javascript, string csharp, string visualbasic, string ruby, string matlab, string r, string c, string php, string perl, string html, string jquery, string css, string nodejs, string asp, string react, string typescript, string angular, string ajax, string view, string glade, string kotlin, string reactnative, string oracle, string mysql, string postgres, string sqllite, string mongodb, string access, string mariadb, string redis, string casandra, string azure, string amazon, string amazonddb)
+        {
+            // Conexión a la base de datos (ajusta la cadena de conexión según tu configuración)
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                oconexion.Open();
+
+                // Insertar el archivo en la tabla de la base de datos
+                string query = "INSERT INTO Encuesta (Alumno, NumeroControl, Maestro, Java, Python, Cmasmas, Javascript, Csharp, VisualBasic, Ruby, Matlab, R, C, Php, Perl, Html, Jquery, Css, NodeJs, AspNet, React, Typescript, Angular, Ajax, Vue, Kotlin, ReactNative, Oracle, MySQL, PostgreSQL, SqlLite, MongoDB, Access, MariaDB, Redis, Casandra, Azure, Amazon, AmazonDDB) VALUES (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @15, @16, @17, @18, @19, @20, @21, @22, @23, @24, @25, @27, @28, @29, @30, @31, @32, @33, @34, @35, @36, @37, @38, @39, @40)";
+
+                using (SqlCommand command = new SqlCommand(query, oconexion))
+                {
+                    command.Parameters.AddWithValue("@1", nombrealumno);
+                    command.Parameters.AddWithValue("@2", numeroControl);
+                    command.Parameters.AddWithValue("@3", maestro);
+                    command.Parameters.AddWithValue("@4", java);
+                    command.Parameters.AddWithValue("@5", python);
+                    command.Parameters.AddWithValue("@6", cmasmas);
+                    command.Parameters.AddWithValue("@7", javascript);
+                    command.Parameters.AddWithValue("@8", csharp);
+                    command.Parameters.AddWithValue("@9", visualbasic);
+                    command.Parameters.AddWithValue("@10", ruby);
+                    command.Parameters.AddWithValue("@11", matlab);
+                    command.Parameters.AddWithValue("@12", r);
+                    command.Parameters.AddWithValue("@13", c);
+                    command.Parameters.AddWithValue("@14", php);
+                    command.Parameters.AddWithValue("@15", perl);
+                    command.Parameters.AddWithValue("@16", html);
+                    command.Parameters.AddWithValue("@17", jquery);
+                    command.Parameters.AddWithValue("@18", css);
+                    command.Parameters.AddWithValue("@19", nodejs);
+                    command.Parameters.AddWithValue("@20", asp);
+                    command.Parameters.AddWithValue("@21", react);
+                    command.Parameters.AddWithValue("@22", typescript);
+                    command.Parameters.AddWithValue("@23", angular);
+                    command.Parameters.AddWithValue("@24", ajax);
+                    command.Parameters.AddWithValue("@25", view);                    ;
+                    command.Parameters.AddWithValue("@27", kotlin);
+                    command.Parameters.AddWithValue("@28", reactnative);
+                    command.Parameters.AddWithValue("@29", oracle);
+                    command.Parameters.AddWithValue("@30", mysql);
+                    command.Parameters.AddWithValue("@31", postgres);
+                    command.Parameters.AddWithValue("@32", sqllite);
+                    command.Parameters.AddWithValue("@33", mongodb);
+                    command.Parameters.AddWithValue("@34", access);
+                    command.Parameters.AddWithValue("@35", mariadb);
+                    command.Parameters.AddWithValue("@36", redis);
+                    command.Parameters.AddWithValue("@37", casandra);
+                    command.Parameters.AddWithValue("@38", azure);
+                    command.Parameters.AddWithValue("@39", amazon);
+                    command.Parameters.AddWithValue("@40", amazonddb);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<Encuesta> ObtenerEncuestas(String numeroControl)
+        {
+            List<Encuesta> encuestas = new List<Encuesta>();
+
+            // Conexión a la base de datos (ajusta la cadena de conexión según tu configuración)
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                oconexion.Open();
+
+                // Consulta SELECT para obtener todos los registros de la tabla Encuesta
+                string query = "SELECT * FROM Encuesta where NumeroControl = '"+numeroControl+"'";
+
+                using (SqlCommand command = new SqlCommand(query, oconexion))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Encuesta encuesta = new Encuesta();
+                            encuesta.Alumno = reader["Alumno"].ToString();
+                            encuesta.NumeroControl = reader["NumeroControl"].ToString();
+                            encuesta.Maestro = reader["Maestro"].ToString();
+                            encuesta.Java = reader["Java"].ToString();
+                            encuesta.Python = reader["Python"].ToString();
+                            encuesta.Cmasmas = reader["Cmasmas"].ToString();
+                            encuesta.Javascript = reader["Javascript"].ToString();
+                            encuesta.Csharp = reader["Csharp"].ToString();
+                            encuesta.VisualBasic = reader["VisualBasic"].ToString();
+                            encuesta.Ruby = reader["Ruby"].ToString();
+                            encuesta.Matlab = reader["Matlab"].ToString();
+                            encuesta.R = reader["R"].ToString();
+                            encuesta.C = reader["C"].ToString();
+                            encuesta.Php = reader["Php"].ToString();
+                            encuesta.Perl = reader["Perl"].ToString();
+                            encuesta.Html = reader["Html"].ToString();
+                            encuesta.Jquery = reader["Jquery"].ToString();
+                            encuesta.Css = reader["Css"].ToString();
+                            encuesta.NodeJs = reader["NodeJs"].ToString();
+                            encuesta.AspNet = reader["AspNet"].ToString();
+                            encuesta.React = reader["React"].ToString();
+                            encuesta.Typescript = reader["Typescript"].ToString();
+                            encuesta.Angular = reader["Angular"].ToString();
+                            encuesta.Ajax = reader["Ajax"].ToString();
+                            encuesta.Vue = reader["Vue"].ToString();
+                            encuesta.Kotlin = reader["Kotlin"].ToString();
+                            encuesta.ReactNative = reader["ReactNative"].ToString();
+                            encuesta.Oracle = reader["Oracle"].ToString();
+                            encuesta.MySQL = reader["MySQL"].ToString();
+                            encuesta.PostgreSQL = reader["PostgreSQL"].ToString();
+                            encuesta.SqlLite = reader["SqlLite"].ToString();
+                            encuesta.MongoDB = reader["MongoDB"].ToString();
+                            encuesta.Access = reader["Access"].ToString();
+                            encuesta.MariaDB = reader["MariaDB"].ToString();
+                            encuesta.Redis = reader["Redis"].ToString();
+                            encuesta.Casandra = reader["Casandra"].ToString();
+                            encuesta.Azure = reader["Azure"].ToString();
+                            encuesta.Amazon = reader["Amazon"].ToString();
+                            encuesta.AmazonDDB = reader["AmazonDDB"].ToString();
+
+                            encuestas.Add(encuesta);
+                        }
+                    }
+                }
+            }
+
+            return encuestas;
+        }
+
+
     }
-}
+}    
+
+

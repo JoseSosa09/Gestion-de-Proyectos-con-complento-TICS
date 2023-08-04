@@ -35,7 +35,7 @@ namespace RJM
 
             if(usuarioMaestro != null )
             {
-                abrirFormulario(PROYECTO, new formProyectos());
+                abrirFormulario(PROYECTO, new formProyectos(usuarioMaestro));
             }
             else
             {
@@ -153,7 +153,7 @@ namespace RJM
 
         private void btnEncuesta_Click(object sender, EventArgs e)
         {
-            abrirFormulario((Button)sender, new formEncuesta());
+            abrirFormulario((Button)sender, new formEncuesta(usuarioActual));
         }
 
         private void btnProyecto_Click(object sender, EventArgs e)
@@ -161,7 +161,7 @@ namespace RJM
 
             if (usuarioMaestro != null)
             {
-                abrirFormulario((Button)sender, new formProyectos());
+                abrirFormulario((Button)sender, new formProyectos(usuarioMaestro));
             }
             else
             {

@@ -411,6 +411,7 @@
   <ItemGroup>
     <Content Include="Resources\DESCA.png" />
     <Content Include="Resources\Image1.png" />
+    <None Include="Resources\PlantillaEncuesta.html" />
     <Content Include="tec.ico" />
   </ItemGroup>
   <ItemGroup>
