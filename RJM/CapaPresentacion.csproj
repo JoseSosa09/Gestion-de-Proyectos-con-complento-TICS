@@ -78,6 +78,12 @@
     <Compile Include="formAlumno\formInfoAlumno.Designer.cs">
       <DependentUpon>formInfoAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="formLogin\formRecuperarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin\formRecuperarContraseña.Designer.cs">
+      <DependentUpon>formRecuperarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="formOpciones\formConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formAlumno\formInfoAlumno.resx">
       <DependentUpon>formInfoAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogin\formRecuperarContraseña.resx">
+      <DependentUpon>formRecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formOpciones\formConfig.resx">
       <DependentUpon>formConfig.cs</DependentUpon>

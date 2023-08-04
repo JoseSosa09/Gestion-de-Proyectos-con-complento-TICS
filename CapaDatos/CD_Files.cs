@@ -11,6 +11,43 @@ namespace CapaDatos
 {
     public class CD_Files
     {
+        public string RecuperarClave(string telefono, string numeroControl, string email)
+        {
+            string clave = "";
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                oconexion.Open();
+
+                try
+                {
+                    // Corregir la consulta SQL utilizando parámetros
+                    string query = "SELECT clave FROM Alumno WHERE telefono = @Telefono AND numeroControl = @NumeroControl AND email = @Email";
+                    using (SqlCommand command = new SqlCommand(query, oconexion))
+                    {
+                        // Agregar los parámetros a la consulta
+                        command.Parameters.AddWithValue("@Telefono", telefono);
+                        command.Parameters.AddWithValue("@NumeroControl", numeroControl);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Cargar los datos en la lista de objetos "Files"
+                            while (reader.Read())
+                            {
+                                clave = (string)reader["clave"];
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de excepciones (opcional)
+                }
+            }
+            return clave;
+        }
+
+
         public void SaveFileToDatabase(string filePath, String programa, string alumno, string numeroControl, string maestro)
         {
             byte[] fileBytes = File.ReadAllBytes(filePath);

@@ -12,6 +12,10 @@ using System.Configuration;
 using System.Windows.Forms;
 using RJM.formsRJM;
 using System.Runtime.Remoting.Messaging;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
+using System.IO;
 
 namespace RJM
 { 
@@ -86,7 +90,7 @@ namespace RJM
                 var x2 = e.CellBounds.Left + (e.CellBounds.Width - w2) / 2;
                 var y2 = e.CellBounds.Top + (e.CellBounds.Height - h2) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.reload, new Rectangle(x2, y2, w2, h2));
+                e.Graphics.DrawImage(Properties.Resources.reload, new System.Drawing.Rectangle(x2, y2, w2, h2));
                 e.Handled = true;
             }
             if (e.ColumnIndex == 9)
@@ -100,7 +104,7 @@ namespace RJM
                 var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.x_button, new Rectangle(x, y, w, h));
+                e.Graphics.DrawImage(Properties.Resources.x_button, new System.Drawing.Rectangle(x, y, w, h));
                 e.Handled = true;
             }
         }
@@ -186,23 +190,84 @@ namespace RJM
                         SaveFileDialog savefile = new SaveFileDialog();
                         savefile.FileName = string.Format("{0}.pdf", DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
-                        List<Encuesta> encuestas = new CN_Files().ObtenerEncuestas(numeroControl);    
+                        List<Encuesta> encuestas = new CN_Files().ObtenerEncuestas(numeroControl);
+                        string PaginaHTML_Texto = Properties.Resources.PlantillaEncuesta.ToString();
 
-                        foreach(Encuesta item in encuestas)
+                        foreach (Encuesta item in encuestas)
                         {
-                            //string PaginaHTML_Texto = Properties.Resources.PlantillaEncuesta.ToString();
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DEPARTAMENTO", tBDepartamento.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@R_DEPARTAMENTO", tBResponsableDepartamento.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@R_PROGRAMA", tbResponsable.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCENTE", tBPuesto.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NOMBRE", cBNombre.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CANTIDAD", tBNumero.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A1", tBActividad1.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A2", tBActividad2.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A3", tBActividad3.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A4", tBActividad4.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@A5", tBActividad5.Text);
-                            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Alumno", item.Alumno);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NumeroControl", item.NumeroControl);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Maestro", item.Maestro);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Java", item.Java);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Python", item.Python);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Cplusplus", item.Cmasmas);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@JavaScript", item.Javascript);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CSharp", item.Csharp);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@VisualBasic", item.VisualBasic);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Ruby", item.Ruby);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MATLAB", item.Matlab);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@R", item.R);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@C", item.C);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PHP", item.Php);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Perl", item.Perl);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@HTML", item.Html);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@jQuery", item.Jquery);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CSS", item.Css);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Node.js", item.NodeJs);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ASP", item.AspNet);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@React", item.React);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TypeScript", item.Typescript);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Angular", item.Angular);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@AJAX", item.Ajax);                                                        
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Kotlin", item.Kotlin);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ReactNative", item.ReactNative);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Oracle", item.Oracle);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MySQL", item.MySQL);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PostgreSQL", item.PostgreSQL);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SQLite", item.SqlLite);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MongoDB", item.MongoDB);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MicrosoftAccess", item.Access);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MariaDB", item.MariaDB);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Redis", item.Redis);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Cassandra", item.Casandra);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MicrosoftAzure", item.Azure);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@AmazonWebServices", item.Amazon);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@AmazonDynamoDB", item.AmazonDDB);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                        }
+
+                        if (savefile.ShowDialog() == DialogResult.OK)
+                        {
+                            using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                            {
+                                //Creamos un nuevo documento y lo definimos como PDF
+                                Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(new Phrase(""));
+
+                                //Agregamos la imagen del banner al documento
+                                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.tec, System.Drawing.Imaging.ImageFormat.Png);
+                                img.ScaleToFit(80, 80);
+                                img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                                //img.SetAbsolutePosition(10,100);
+                                img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                                pdfDoc.Add(img);
+
+
+                                //pdfDoc.Add(new Phrase("Hola Mundo"));
+                                using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                                {
+                                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                                }
+
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
                         }
                     }
                     else

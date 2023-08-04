@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInsertarPropuesta));
             this.panel1 = new RJM.panel();
             this.iconoCerrar = new FontAwesome.Sharp.IconButton();
             this.cBEstatus = new System.Windows.Forms.ComboBox();
@@ -374,6 +375,7 @@
             this.ClientSize = new System.Drawing.Size(606, 573);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formInsertarPropuesta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formInsertarPropuesta";

@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CapaNegocio;
 using CapaEntidad;
+using RJM.formLogin;
+
 namespace RJM
 {
     public partial class LOGIN : Form
@@ -162,6 +164,11 @@ namespace RJM
             registro.FormClosing += formRegresarLoginRegistro;
         }
 
-
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form form = new formRecuperarContraseña();
+            form.Show();
+            this.Hide();
+        }
     }
 }

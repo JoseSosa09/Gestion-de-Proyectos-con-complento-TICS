@@ -14,6 +14,11 @@ namespace CapaNegocio
     {
         public CD_Files obj = new CD_Files();
 
+        public String RecuperarClave(String telefono, String numeroControl, String email)
+        {
+            return obj.RecuperarClave(telefono, numeroControl, email);     
+        }
+
         public void SaveFileToDatabase(string path, string programa, string alumno, string numeroControl, string maestro)
         {
 
