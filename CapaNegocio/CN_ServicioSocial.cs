@@ -38,9 +38,9 @@ namespace CapaNegocio
             return lista;
         }
 
-        public List<ServicioSocial> RegistrarServicio(string idProyectoPropuesta, string nombreDepartamento, string responsableDepartamento, string responsablePrograma,  string puestoResponsable, string nombrePrograma, string numAlumnos, string categoria)
+        public List<ServicioSocial> RegistrarServicio(string idProyectoPropuesta, string nombreDepartamento, string responsableDepartamento, string responsablePrograma,  string puestoResponsable, string nombrePrograma, string categoria)
         {
-            List<ServicioSocial> lista = new CD_ServicioSocial().RegistrarServicio(Convert.ToInt32(idProyectoPropuesta), nombreDepartamento, responsableDepartamento, responsablePrograma, puestoResponsable, nombrePrograma, Convert.ToInt32(numAlumnos), categoria);
+            List<ServicioSocial> lista = new CD_ServicioSocial().RegistrarServicio(Convert.ToInt32(idProyectoPropuesta), nombreDepartamento, responsableDepartamento, responsablePrograma, puestoResponsable, nombrePrograma, categoria);
 
             return lista;
 

@@ -113,7 +113,7 @@ namespace RJM
 
         private void ALUMNOS_Click(object sender, EventArgs e)
         {
-            abrirFormulario((Button)sender, new formAlumnos());
+            abrirFormulario((Button)sender, new formAlumnos(usuarioMaestro));
         }
 
         private void AdjustForm()

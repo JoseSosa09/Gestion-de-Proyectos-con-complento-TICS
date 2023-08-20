@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInsertarServicioSocial));
             this.label = new System.Windows.Forms.Label();
-            this.tBAlumnos = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tBJefe = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbDepartamento = new System.Windows.Forms.TextBox();
@@ -62,30 +60,6 @@
             this.label.Size = new System.Drawing.Size(454, 37);
             this.label.TabIndex = 15;
             this.label.Text = "PROGRAMA SERVICIO SOCIAL";
-            // 
-            // tBAlumnos
-            // 
-            this.tBAlumnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBAlumnos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tBAlumnos.Location = new System.Drawing.Point(275, 319);
-            this.tBAlumnos.MaxLength = 255;
-            this.tBAlumnos.Name = "tBAlumnos";
-            this.tBAlumnos.Size = new System.Drawing.Size(113, 28);
-            this.tBAlumnos.TabIndex = 5;
-            this.tBAlumnos.Validating += new System.ComponentModel.CancelEventHandler(this.validarTextBox);
-            this.tBAlumnos.Validated += new System.EventHandler(this.validandoTextBox);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(154, 319);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 25);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "Alumnos:";
             // 
             // tBJefe
             // 
@@ -304,9 +278,7 @@
             this.panel1.Controls.Add(this.tBPuesto);
             this.panel1.Controls.Add(this.tBJefe);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tBResponsable);
-            this.panel1.Controls.Add(this.tBAlumnos);
             this.panel1.Controls.Add(this.label2);
             this.panel1.ForeColor = System.Drawing.Color.Black;
             this.panel1.GradientAngle = 145F;
@@ -342,8 +314,6 @@
         #endregion
 
         public System.Windows.Forms.Label label;
-        public System.Windows.Forms.TextBox tBAlumnos;
-        public System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox tBJefe;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox tbDepartamento;

@@ -10,12 +10,10 @@ namespace CapaDatos
 {
     public class CD_Alumno
     {
-        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
 
-        public List<Alumno> leer_datos(String dato)
-        {   List<Alumno> lista = new List<Alumno>();
-            String maestro = ConfigurationManager.AppSettings["maestro"];
+        public List<Alumno> leer_datos(String dato, String maestro)
+        {   List<Alumno> lista = new List<Alumno>();            
 
             try
             {

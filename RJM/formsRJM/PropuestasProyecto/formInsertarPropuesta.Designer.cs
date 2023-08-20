@@ -41,7 +41,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.tBAlumnos = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tBNombre = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.tBAlumnos);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tBNombre);
             this.panel1.Controls.Add(this.label);
             this.panel1.Controls.Add(this.label5);
@@ -220,7 +218,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(41, 442);
+            this.label7.Location = new System.Drawing.Point(41, 401);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 25);
             this.label7.TabIndex = 28;
@@ -248,25 +246,12 @@
             // 
             this.tBAlumnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBAlumnos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tBAlumnos.Location = new System.Drawing.Point(192, 398);
+            this.tBAlumnos.Location = new System.Drawing.Point(-11, 348);
             this.tBAlumnos.MaxLength = 255;
             this.tBAlumnos.Name = "tBAlumnos";
             this.tBAlumnos.Size = new System.Drawing.Size(113, 28);
             this.tBAlumnos.TabIndex = 24;
-            this.tBAlumnos.Validating += new System.ComponentModel.CancelEventHandler(this.validarTextBox);
-            this.tBAlumnos.Validated += new System.EventHandler(this.validandoTextBox);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(71, 398);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 25);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Alumnos:";
+            this.tBAlumnos.Visible = false;
             // 
             // tBNombre
             // 
@@ -361,7 +346,7 @@
             // 
             this.tBDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBDescripcion.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.tBDescripcion.Location = new System.Drawing.Point(192, 444);
+            this.tBDescripcion.Location = new System.Drawing.Point(192, 403);
             this.tBDescripcion.MaxLength = 255;
             this.tBDescripcion.Name = "tBDescripcion";
             this.tBDescripcion.Size = new System.Drawing.Size(394, 28);
@@ -394,7 +379,6 @@
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox tBAlumnos;
         public System.Windows.Forms.Button btnAceptar;
         public System.Windows.Forms.TextBox tBDescripcion;

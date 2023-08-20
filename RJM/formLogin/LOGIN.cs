@@ -14,7 +14,6 @@ namespace RJM
 {
     public partial class LOGIN : Form
     {
-        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
         public LOGIN()
         {
@@ -118,9 +117,7 @@ namespace RJM
 
             else if (omaestro != null)
             {
-                config.AppSettings.Settings["maestro"].Value = omaestro.nombreCompleto;
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
+
 
                 PRINCIPAL form = new PRINCIPAL(oalumno, omaestro);                
                 form.Show();

@@ -21,7 +21,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    string query = "SELECT* FROM PROYECTO_PROPUESTA WHERE idProyectoPropuesta like '" + dato.ToString() + "' OR categoria like '" + dato.ToString() + "' OR estatus like '" + dato.ToString() + "'OR nombre like '" + dato.ToString() + "'OR responsable like '" + dato.ToString() + "'OR colaboradores like '" + dato.ToString() + "'or numAlumnos like '" + dato.ToString() + "'OR descripcion like '" + dato.ToString()+"'";
+                    string query = "SELECT* FROM PROYECTO_PROPUESTA WHERE idProyectoPropuesta like '" + dato.ToString() + "' OR categoria like '" + dato.ToString() + "' OR estatus like '" + dato.ToString() + "'OR nombre like '" + dato.ToString() + "'OR responsable like '" + dato.ToString() + "'OR colaboradores like '" + dato.ToString() + "'OR descripcion like '" + dato.ToString()+"'";
 
 
 
@@ -40,8 +40,7 @@ namespace CapaDatos
                                 estatus = reader["estatus"].ToString(),
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
-                                colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
+                                colaboradores = reader["colaboradores"].ToString(),                                
                                 descripcion = reader["descripcion"].ToString()
                             });
 
@@ -82,7 +81,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString(),
                             });
 
@@ -122,7 +120,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString()
                             });
 
@@ -163,7 +160,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString()
                             });
 
@@ -181,7 +177,7 @@ namespace CapaDatos
         }
 
 
-        public List<ProyectoPropuesta> RegistrarPropuesta(String categoria, String status, String nombre, String responsable, String colaboradores, int numeroAlumnos, String descripcion)
+        public List<ProyectoPropuesta> RegistrarPropuesta(String categoria, String status, String nombre, String responsable, String colaboradores, String descripcion)
         {
             List<ProyectoPropuesta> lista = new List<ProyectoPropuesta>();
 
@@ -194,8 +190,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@estatus", status);
                     cmd.Parameters.AddWithValue("@nombre", nombre);
                     cmd.Parameters.AddWithValue("@responsable", responsable);
-                    cmd.Parameters.AddWithValue("@colaboradores", colaboradores);
-                    cmd.Parameters.AddWithValue("@numAlumnos", numeroAlumnos);
+                    cmd.Parameters.AddWithValue("@colaboradores", colaboradores);                    
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);                    
                     cmd.CommandType = CommandType.StoredProcedure;                    
                     oconexion.Open();
@@ -212,7 +207,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString()
                             });
                         }
@@ -251,7 +245,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString()
                             });
 
@@ -268,7 +261,7 @@ namespace CapaDatos
             return lista;
         }
 
-        public List<ProyectoPropuesta> Update (int id, String categoria, String status, String nombre, String responsable, String colaboradores, int numeroAlumnos, String descripcion)
+        public List<ProyectoPropuesta> Update (int id, String categoria, String status, String nombre, String responsable, String colaboradores, String descripcion)
         {
             List<ProyectoPropuesta> lista = new List<ProyectoPropuesta>();
 
@@ -283,7 +276,6 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@nombre", nombre);
                     cmd.Parameters.AddWithValue("@responsable", responsable);
                     cmd.Parameters.AddWithValue("@colaboradores", colaboradores);
-                    cmd.Parameters.AddWithValue("@numAlumnos", numeroAlumnos);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -302,7 +294,6 @@ namespace CapaDatos
                                 nombre = reader["nombre"].ToString(),
                                 responsable = reader["responsable"].ToString(),
                                 colaboradores = reader["colaboradores"].ToString(),
-                                numAlumnos = Convert.ToInt32(reader["numAlumnos"]),
                                 descripcion = reader["descripcion"].ToString()
                             });
                         }

@@ -38,7 +38,7 @@ namespace RJM.formRJM
             foreach(ProyectoPropuesta item in lista)
             {                
                 dgvTodas.Rows.Add(new object[] {item.idProyectoPropuesta, item.categoria,item.estatus, item.nombre, item.responsable,
-                item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
+                item.colaboradores,  item.descripcion, "", ""});
             }
         }
 
@@ -50,7 +50,7 @@ namespace RJM.formRJM
             foreach (ProyectoPropuesta item in lista)
             {
                 dgvTodas.Rows.Add(new object[] {item.idProyectoPropuesta, item.categoria,item.estatus, item.nombre, item.responsable,
-                item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
+                item.colaboradores, item.descripcion, "", ""});
             }
         }
 
@@ -62,7 +62,7 @@ namespace RJM.formRJM
             foreach (ProyectoPropuesta item in lista)
             {
                 dgvTodas.Rows.Add(new object[] {item.idProyectoPropuesta, item.categoria,item.estatus, item.nombre, item.responsable,
-                item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
+                item.colaboradores,  item.descripcion, "", ""});
             }
         }
       
@@ -72,7 +72,7 @@ namespace RJM.formRJM
                 return;
 
 
-            if (e.ColumnIndex == 8)
+            if (e.ColumnIndex == 7)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -87,7 +87,7 @@ namespace RJM.formRJM
                 e.Handled = true;
             }
 
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 8)
             {
 
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
@@ -150,7 +150,6 @@ namespace RJM.formRJM
                         form.tBNombre.Text = dgvTodas.Rows[indice].Cells["nombre"].Value.ToString();
                         form.tBResponsable.Text = dgvTodas.Rows[indice].Cells["nombreMaestro"].Value.ToString();
                         form.tBColaboradores.Text = dgvTodas.Rows[indice].Cells["colaboradores"].Value.ToString();
-                        form.tBAlumnos.Text = dgvTodas.Rows[indice].Cells["numAlumnos"].Value.ToString();
                         form.tBDescripcion.Text = dgvTodas.Rows[indice].Cells["nombreAlumno"].Value.ToString();
 
                         form.Show();
@@ -186,21 +185,7 @@ namespace RJM.formRJM
             dgvTodas.Visible = true;
         }
 
-        private void btnResidencias_Click_1(object sender, EventArgs e)
-        {
-            SidePanel.Visible = true;
-            SidePanel.Width = btnResidencias.Width;
-            SidePanel.Left = btnResidencias.Left;
-
-            agregarProyectoIntegrador.Visible = false;
-            agregarServicioSocial.Visible = false;
-            agregarPropuesta.Visible = true;                        
-
-            dgvTodas.Visible = false; 
-            MostrarDatos();
-            dgvTodas.Visible = true;
-        }
-
+      
         private void btnServicioSocial_Click(object sender, EventArgs e)
         {
             SidePanel.Visible = true;
@@ -240,7 +225,7 @@ namespace RJM.formRJM
             foreach (ProyectoPropuesta item in lista)
             {
                 dgvTodas.Rows.Add(new object[] {item.idProyectoPropuesta, item.categoria,item.estatus, item.nombre, item.responsable,
-                item.colaboradores, item.numAlumnos, item.descripcion, "", ""});
+                item.colaboradores, item.descripcion, "", ""});
             }
         }
 
@@ -269,10 +254,8 @@ namespace RJM.formRJM
                         categoria = dgvTodas.CurrentRow.Cells["categoria"].Value.ToString();
                         nombre = dgvTodas.CurrentRow.Cells["nombre"].Value.ToString(); 
                         nombreMaestro = dgvTodas.CurrentRow.Cells["nombreMaestro"].Value.ToString();
-                        numAlumnos = dgvTodas.CurrentRow.Cells["numAlumnos"].Value.ToString();
 
                         form.tBResponsable.Text = nombreMaestro;
-                        form.tBAlumnos.Text = numAlumnos;
                         form.tBNombre.Text = nombre;
                         form.tBCategoria.Text = categoria;
                         form.tBId.Text = IdCategoria;

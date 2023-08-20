@@ -103,9 +103,9 @@ namespace CapaNegocio
 
         }
 
-        public List<ProyectoPropuesta> RegistrarPropuesta(String categoria, String status, String nombre, String responsable, String colaboradores, String numeroAlumnos, String descripcion)
+        public List<ProyectoPropuesta> RegistrarPropuesta(String categoria, String status, String nombre, String responsable, String colaboradores, String descripcion)
         {
-            List<ProyectoPropuesta> lista = new CD_ProyectoPropuesta().RegistrarPropuesta(categoria, status, nombre, responsable, colaboradores, Convert.ToInt32(numeroAlumnos), descripcion);
+            List<ProyectoPropuesta> lista = new CD_ProyectoPropuesta().RegistrarPropuesta(categoria, status, nombre, responsable, colaboradores,  descripcion);
 
             return lista;
 
@@ -116,10 +116,10 @@ namespace CapaNegocio
             propuesta.Delete(id);
         }
 
-        public void Update(string id, String categoria, String status, String nombre, String responsable, String colaboradores, String numeroAlumnos, String descripcion)
+        public void Update(string id, String categoria, String status, String nombre, String responsable, String colaboradores,  String descripcion)
         {
             CD_ProyectoPropuesta lista = new CD_ProyectoPropuesta(); 
-            lista.Update(Convert.ToInt32(id), categoria, status, nombre, responsable, colaboradores, Convert.ToInt32(numeroAlumnos), descripcion);
+            lista.Update(Convert.ToInt32(id), categoria, status, nombre, responsable, colaboradores,  descripcion);
             
         }
 

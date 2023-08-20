@@ -302,12 +302,14 @@
             // 
             // imprimir
             // 
+            this.imprimir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.imprimir.HeaderText = "";
             this.imprimir.MinimumWidth = 6;
             this.imprimir.Name = "imprimir";
             this.imprimir.ReadOnly = true;
             this.imprimir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.imprimir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.imprimir.Width = 35;
             // 
             // formAlumnos
             // 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInsertarProyectoIntegrador));
-            this.label = new System.Windows.Forms.Label();
             this.tBColaboradores = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tBDescripcion = new System.Windows.Forms.TextBox();
@@ -50,21 +49,9 @@
             this.iconoCerrar = new FontAwesome.Sharp.IconButton();
             this.icnonoMinimizar = new FontAwesome.Sharp.IconButton();
             this.panel1 = new RJM.panel();
+            this.label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.ForeColor = System.Drawing.Color.Black;
-            this.label.Location = new System.Drawing.Point(40, 43);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(535, 37);
-            this.label.TabIndex = 15;
-            this.label.Text = "REGISTRAR PROYECTO INTEGRADOR";
-            this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_MouseDown);
             // 
             // tBColaboradores
             // 
@@ -353,6 +340,19 @@
             this.panel1.Size = new System.Drawing.Size(611, 622);
             this.panel1.TabIndex = 59;
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.Color.Black;
+            this.label.Location = new System.Drawing.Point(151, 32);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(337, 37);
+            this.label.TabIndex = 15;
+            this.label.Text = "REGISTRAR PROYECTO";
+            this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label_MouseDown);
+            // 
             // formInsertarProyectoIntegrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -376,8 +376,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Label label;
         public System.Windows.Forms.TextBox tBColaboradores;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox tBDescripcion;
@@ -398,5 +396,6 @@
         private FontAwesome.Sharp.IconButton iconoCerrar;
         private FontAwesome.Sharp.IconButton icnonoMinimizar;
         private panel panel1;
+        public System.Windows.Forms.Label label;
     }
 }

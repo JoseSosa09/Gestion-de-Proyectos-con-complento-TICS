@@ -75,13 +75,6 @@ namespace RJM
             SidePanel.Left = btnPropuestas.Left;
         }
 
-        private void btnResidencias_Click(object sender, EventArgs e)
-        {         
-            abrirFormulario((Button)sender, new formProgramaResidencias());
-            SidePanel.Width = btnResidencias.Width;
-            SidePanel.Left = btnResidencias.Left;
-        }
-
         private void btnServicioSocial_Click(object sender, EventArgs e)
         {         
             abrirFormulario((Button)sender, new formProgramaServicioSocial());

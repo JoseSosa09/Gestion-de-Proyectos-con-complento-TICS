@@ -33,7 +33,6 @@
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btnProyectoIntegrador = new System.Windows.Forms.Button();
             this.btnServicioSocial = new System.Windows.Forms.Button();
-            this.btnResidencias = new System.Windows.Forms.Button();
             this.btnPropuestas = new System.Windows.Forms.Button();
             this.panelSuperior.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +54,6 @@
             this.panelSuperior.Controls.Add(this.SidePanel);
             this.panelSuperior.Controls.Add(this.btnProyectoIntegrador);
             this.panelSuperior.Controls.Add(this.btnServicioSocial);
-            this.panelSuperior.Controls.Add(this.btnResidencias);
             this.panelSuperior.Controls.Add(this.btnPropuestas);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.ForeColor = System.Drawing.Color.Black;
@@ -82,7 +80,7 @@
             this.btnProyectoIntegrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProyectoIntegrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProyectoIntegrador.ForeColor = System.Drawing.Color.Gold;
-            this.btnProyectoIntegrador.Location = new System.Drawing.Point(647, 0);
+            this.btnProyectoIntegrador.Location = new System.Drawing.Point(402, 0);
             this.btnProyectoIntegrador.Name = "btnProyectoIntegrador";
             this.btnProyectoIntegrador.Size = new System.Drawing.Size(200, 58);
             this.btnProyectoIntegrador.TabIndex = 4;
@@ -99,30 +97,13 @@
             this.btnServicioSocial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnServicioSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServicioSocial.ForeColor = System.Drawing.Color.Gold;
-            this.btnServicioSocial.Location = new System.Drawing.Point(376, 0);
+            this.btnServicioSocial.Location = new System.Drawing.Point(131, 0);
             this.btnServicioSocial.Name = "btnServicioSocial";
             this.btnServicioSocial.Size = new System.Drawing.Size(271, 58);
             this.btnServicioSocial.TabIndex = 3;
             this.btnServicioSocial.Text = "Programa de Servicio Social";
             this.btnServicioSocial.UseVisualStyleBackColor = false;
             this.btnServicioSocial.Click += new System.EventHandler(this.btnServicioSocial_Click);
-            // 
-            // btnResidencias
-            // 
-            this.btnResidencias.BackColor = System.Drawing.Color.Black;
-            this.btnResidencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResidencias.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnResidencias.FlatAppearance.BorderSize = 0;
-            this.btnResidencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResidencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResidencias.ForeColor = System.Drawing.Color.Gold;
-            this.btnResidencias.Location = new System.Drawing.Point(131, 0);
-            this.btnResidencias.Name = "btnResidencias";
-            this.btnResidencias.Size = new System.Drawing.Size(245, 58);
-            this.btnResidencias.TabIndex = 2;
-            this.btnResidencias.Text = "Programa de Residencias";
-            this.btnResidencias.UseVisualStyleBackColor = false;
-            this.btnResidencias.Click += new System.EventHandler(this.btnResidencias_Click);
             // 
             // btnPropuestas
             // 
@@ -163,7 +144,6 @@
         private System.Windows.Forms.Panel panelSuperior;
         private System.Windows.Forms.Button btnProyectoIntegrador;
         private System.Windows.Forms.Button btnServicioSocial;
-        private System.Windows.Forms.Button btnResidencias;
         private System.Windows.Forms.Button btnPropuestas;
         private System.Windows.Forms.Panel SidePanel;
     }

@@ -44,7 +44,6 @@
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btnProyectoIntegrador = new System.Windows.Forms.Button();
             this.btnServicioSocial = new System.Windows.Forms.Button();
-            this.btnResidencias = new System.Windows.Forms.Button();
             this.btnTodas = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvTodas = new System.Windows.Forms.DataGridView();
@@ -54,7 +53,6 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreMaestro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colaboradores = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numAlumnos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editarButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.borrarButton = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -114,7 +112,7 @@
             this.agregarProyectoIntegrador.Name = "agregarProyectoIntegrador";
             this.agregarProyectoIntegrador.Size = new System.Drawing.Size(320, 34);
             this.agregarProyectoIntegrador.TabIndex = 24;
-            this.agregarProyectoIntegrador.Text = "Agregar Proyecto Integrador";
+            this.agregarProyectoIntegrador.Text = "Agregar a Proyecto Asignar";
             this.agregarProyectoIntegrador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.agregarProyectoIntegrador.UseVisualStyleBackColor = false;
             this.agregarProyectoIntegrador.Visible = false;
@@ -195,7 +193,6 @@
             this.panel2.Controls.Add(this.SidePanel);
             this.panel2.Controls.Add(this.btnProyectoIntegrador);
             this.panel2.Controls.Add(this.btnServicioSocial);
-            this.panel2.Controls.Add(this.btnResidencias);
             this.panel2.Controls.Add(this.btnTodas);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 100);
@@ -222,12 +219,12 @@
             this.btnProyectoIntegrador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnProyectoIntegrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProyectoIntegrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProyectoIntegrador.Location = new System.Drawing.Point(471, 0);
+            this.btnProyectoIntegrador.Location = new System.Drawing.Point(316, 0);
             this.btnProyectoIntegrador.Margin = new System.Windows.Forms.Padding(5);
             this.btnProyectoIntegrador.Name = "btnProyectoIntegrador";
             this.btnProyectoIntegrador.Size = new System.Drawing.Size(236, 58);
             this.btnProyectoIntegrador.TabIndex = 22;
-            this.btnProyectoIntegrador.Text = "Proyecto Integrador";
+            this.btnProyectoIntegrador.Text = "Proyectos Asignar";
             this.btnProyectoIntegrador.UseVisualStyleBackColor = false;
             this.btnProyectoIntegrador.Click += new System.EventHandler(this.btnProyectoIntegrador_Click);
             // 
@@ -241,7 +238,7 @@
             this.btnServicioSocial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnServicioSocial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnServicioSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServicioSocial.Location = new System.Drawing.Point(280, 0);
+            this.btnServicioSocial.Location = new System.Drawing.Point(125, 0);
             this.btnServicioSocial.Margin = new System.Windows.Forms.Padding(5);
             this.btnServicioSocial.Name = "btnServicioSocial";
             this.btnServicioSocial.Size = new System.Drawing.Size(191, 58);
@@ -249,25 +246,6 @@
             this.btnServicioSocial.Text = "Servicio Social";
             this.btnServicioSocial.UseVisualStyleBackColor = false;
             this.btnServicioSocial.Click += new System.EventHandler(this.btnServicioSocial_Click);
-            // 
-            // btnResidencias
-            // 
-            this.btnResidencias.BackColor = System.Drawing.Color.Transparent;
-            this.btnResidencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResidencias.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnResidencias.FlatAppearance.BorderSize = 0;
-            this.btnResidencias.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnResidencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnResidencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResidencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResidencias.Location = new System.Drawing.Point(125, 0);
-            this.btnResidencias.Margin = new System.Windows.Forms.Padding(5);
-            this.btnResidencias.Name = "btnResidencias";
-            this.btnResidencias.Size = new System.Drawing.Size(155, 58);
-            this.btnResidencias.TabIndex = 20;
-            this.btnResidencias.Text = "Residencias";
-            this.btnResidencias.UseVisualStyleBackColor = false;
-            this.btnResidencias.Click += new System.EventHandler(this.btnResidencias_Click_1);
             // 
             // btnTodas
             // 
@@ -336,7 +314,6 @@
             this.nombre,
             this.nombreMaestro,
             this.colaboradores,
-            this.numAlumnos,
             this.nombreAlumno,
             this.editarButton,
             this.borrarButton});
@@ -434,14 +411,6 @@
             this.colaboradores.MinimumWidth = 6;
             this.colaboradores.Name = "colaboradores";
             this.colaboradores.ReadOnly = true;
-            // 
-            // numAlumnos
-            // 
-            this.numAlumnos.FillWeight = 24F;
-            this.numAlumnos.HeaderText = "Número Alumnos";
-            this.numAlumnos.MinimumWidth = 6;
-            this.numAlumnos.Name = "numAlumnos";
-            this.numAlumnos.ReadOnly = true;
             // 
             // nombreAlumno
             // 
@@ -546,7 +515,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnProyectoIntegrador;
         private System.Windows.Forms.Button btnServicioSocial;
-        private System.Windows.Forms.Button btnResidencias;
         private System.Windows.Forms.Button btnTodas;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgvTodas;
@@ -554,19 +522,18 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private panel panelAgregarPropuesta;
         private System.Windows.Forms.Label agregarPropuesta;
+        private System.Windows.Forms.Panel SidePanel;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton agregarServicioSocial;
+        private FontAwesome.Sharp.IconButton agregarProyectoIntegrador;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn estatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreMaestro;
         private System.Windows.Forms.DataGridViewTextBoxColumn colaboradores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numAlumnos;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAlumno;
         private System.Windows.Forms.DataGridViewButtonColumn editarButton;
         private System.Windows.Forms.DataGridViewButtonColumn borrarButton;
-        private System.Windows.Forms.Panel SidePanel;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton agregarServicioSocial;
-        private FontAwesome.Sharp.IconButton agregarProyectoIntegrador;
     }
 }

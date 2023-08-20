@@ -20,6 +20,9 @@ namespace RJM.formsRJM
         public formInsertarPropuesta()
         {
             InitializeComponent();
+            cBCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBEstatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            tBResponsable.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         //Mover Panel Titulo
@@ -42,13 +45,13 @@ namespace RJM.formsRJM
             {
                 try
                 {
-                    propuesta.RegistrarPropuesta(categoria, cBEstatus.Text, tBNombre.Text, responsable, tBColaboradores.Text, tBAlumnos.Text, tBDescripcion.Text);
+                    propuesta.RegistrarPropuesta(categoria, cBEstatus.Text, tBNombre.Text, responsable, tBColaboradores.Text, tBDescripcion.Text);
                     MessageBox.Show("Se ha insertado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
                     limpiar();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Alumno solo acepta números", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Complete los campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }                     
         }
@@ -64,13 +67,13 @@ namespace RJM.formsRJM
             {
                 try
                 {
-                    propuesta.Update(tBId.Text, categoria, estatus, tBNombre.Text, responsable, tBColaboradores.Text, tBAlumnos.Text, tBDescripcion.Text);
+                    propuesta.Update(tBId.Text, categoria, estatus, tBNombre.Text, responsable, tBColaboradores.Text,  tBDescripcion.Text);
                     MessageBox.Show("Se ha actualizado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
                     limpiar();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Alumno solo acepta números", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Complete los campos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

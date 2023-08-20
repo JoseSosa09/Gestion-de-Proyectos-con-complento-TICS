@@ -21,13 +21,14 @@ namespace RJM
 { 
     public partial class formAlumnos : Form
     {
-        private String maestro = ConfigurationManager.AppSettings["maestro"];
         private CN_Alumno alumno = new CN_Alumno();
         private List<Alumno> listAlumno;
-
-        public formAlumnos()
+        public Maestro master;
+        
+        public formAlumnos(Maestro maestro)
         {
             InitializeComponent();
+            this.master = maestro;
         }
 
         private void formAlumnos_Load(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace RJM
 
         public void cargarDatos()
         {
-
+            String maestro = master.nombreCompleto.ToString();
             listAlumno = alumno.Listar_X_Maestro(maestro);
             foreach (Alumno item in listAlumno)
             {
@@ -56,7 +57,7 @@ namespace RJM
             if(textBoxBuscar.Text.Length > 1)
             {
                 dgvTodas.Rows.Clear();
-                List<Alumno> lista = new CN_Alumno().Listar_X_Palabra(dato);
+                List<Alumno> lista = new CN_Alumno().Listar_X_Palabra(dato, master.nombreCompleto.ToString());
 
                 foreach (Alumno item in lista)
                 {
@@ -105,6 +106,20 @@ namespace RJM
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
 
                 e.Graphics.DrawImage(Properties.Resources.x_button, new System.Drawing.Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+            if (e.ColumnIndex == 10)
+            {
+
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = Properties.Resources.flecha_hacia_abajo.Width;
+                var h = Properties.Resources.flecha_hacia_abajo.Height;
+
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.flecha_hacia_abajo, new System.Drawing.Rectangle(x, y, w, h));
                 e.Handled = true;
             }
         }
@@ -229,7 +244,7 @@ namespace RJM
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MicrosoftAccess", item.Access);
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MariaDB", item.MariaDB);
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Redis", item.Redis);
-                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Cassandra", item.Casandra);
+                            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@Casandra", item.Casandra);
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MicrosoftAzure", item.Azure);
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@AmazonWebServices", item.Amazon);
                             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@AmazonDynamoDB", item.AmazonDDB);

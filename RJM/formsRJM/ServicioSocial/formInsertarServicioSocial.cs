@@ -36,7 +36,7 @@ namespace RJM.formsRJM
 
             if (responsable != "false")
             {
-                if (tBNombre.Text.Length > 0 && tBResponsable.Text.Length > 0 && tbDepartamento.Text.Length > 0 && tBPuesto.Text.Length > 0 && tBAlumnos.Text.Length > 0)
+                if (tBNombre.Text.Length > 0 && tBResponsable.Text.Length > 0 && tbDepartamento.Text.Length > 0 && tBPuesto.Text.Length > 0)
                 {
                     int idPI = Convert.ToInt32(tBId.Text); //idProyectoIntegrador que se insertara
                     List<ServicioSocial> buscarID = social.BuscarID(idPI); //Verificando si se encuentra en la BD
@@ -55,7 +55,7 @@ namespace RJM.formsRJM
                     {
                         try
                         {
-                            social.RegistrarServicio(tBId.Text, tbDepartamento.Text, tBJefe.Text, tBResponsable.Text, tBPuesto.Text, tBNombre.Text, tBAlumnos.Text, categoria);
+                            social.RegistrarServicio(tBId.Text, tbDepartamento.Text, tBJefe.Text, tBResponsable.Text, tBPuesto.Text, tBNombre.Text, categoria);
                             MessageBox.Show("Se ha insertado de manera correcta", "CORRECTO", MessageBoxButtons.OK);
                             limpiar();
                         }
@@ -111,7 +111,6 @@ namespace RJM.formsRJM
             tBId.Text = "";
             tbDepartamento.Text = "";
             tBCategoria.Text = "";
-            tBAlumnos.Text = "";
             tBJefe.Text = "";            
             tBResponsable.Text = "";
             tBPuesto.Text = "";
